@@ -524,6 +524,26 @@ export const allScripts: ScriptProgressData[] = [
       { label:"吃够量：养护2-3克随餐·一粒两粒是交税", sub:"随餐吸收好分次吃", startS:251, endS:311 },
       { label:"边界收尾：不是药·两个红灯·一句话总结", sub:"BMJ诚实结论+房颤抗凝双红灯", startS:311, endS:394 },
     ]},
+  { id:"script-102", num:102, title:"营养师不是没前景——考个证的没前景", totalDurationS:263,
+    chapters:[
+      { label:"开场：考个证没前景", sub:"营养师有前景·但发食谱的没有", startS:0, endS:30 },
+      { label:"医学院里没有营养科", sub:"考执医20页·轮转八大系统独缺营养科", startS:30, endS:65 },
+      { label:"发食谱的会被AI替", sub:"不是在跟同行竞争是在跟AI竞争", startS:65, endS:92 },
+      { label:"国家规划的大缺口", sub:"每万人1名营养指导员·88.5%慢病死亡", startS:92, endS:142 },
+      { label:"有前景的是给方案的人", sub:"懂身体懂日子·判断力AI替不了", startS:142, endS:180 },
+      { label:"AI把门槛拆了", sub:"三年门槛三个月跨过去·AI营养师", startS:180, endS:222 },
+      { label:"收尾：转给想转行的TA", sub:"奔着帮人把病吃回去·路宽得很", startS:222, endS:263 },
+    ]},
+  { id:"script-103", num:103, title:"情绪才是健康最大的隐形变量——婚姻不幸福的人身体差在哪", totalDurationS:245,
+    chapters:[
+      { label:"开场：考执医·手术台上见到的身体", sub:"几千页教材没有情绪健康一页", startS:0, endS:28 },
+      { label:"数据冲击：每10对结婚6对离婚", sub:"2024年结婚610万离婚351万", startS:28, endS:58 },
+      { label:"11年腰斩：结婚1346万→610万", sub:"离婚的越来越多结婚的越来越少", startS:58, endS:90 },
+      { label:"哈佛85年：关系最好的人最健康", sub:"孤独≈每天抽半包烟", startS:90, endS:130 },
+      { label:"机制：情绪是开关·内耗是失血", sub:"应激压力激素炎症细胞磨损", startS:130, endS:165 },
+      { label:"数据验证：离婚心血管+28%/+35%", sub:"180万+200万双meta研究", startS:165, endS:200 },
+      { label:"收尾：健康100分·情绪是大题", sub:"先照顾好情绪才谈得上照顾好身体", startS:200, endS:245 },
+    ]},
 ];
 
 export function getScriptData(id: string): ScriptProgressData | undefined {
