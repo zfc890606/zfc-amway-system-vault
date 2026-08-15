@@ -1,0 +1,193 @@
+.page {
+  padding-bottom: 40rpx;
+}
+
+/* 个人头部 */
+.profile {
+  margin-top: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pf-left {
+  display: flex;
+  align-items: center;
+}
+
+.pf-avatar {
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 50%;
+  background: #3BA776;
+  color: #fff;
+  font-size: 40rpx;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.pf-info {
+  margin-left: 20rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.pf-name {
+  font-size: 34rpx;
+  font-weight: 700;
+  color: #2B2B2B;
+  display: flex;
+  align-items: center;
+}
+
+.pf-owner {
+  font-size: 20rpx;
+  color: #fff;
+  background: #F5A623;
+  border-radius: 8rpx;
+  padding: 2rpx 10rpx;
+  margin-left: 12rpx;
+}
+
+.pf-sub {
+  font-size: 22rpx;
+  color: #999;
+  margin-top: 6rpx;
+}
+
+.pf-edit {
+  font-size: 26rpx;
+  color: #3BA776;
+  border: 2rpx solid #3BA776;
+  border-radius: 10rpx;
+  padding: 8rpx 20rpx;
+}
+
+/* 统计 */
+.stats-row {
+  display: flex;
+  margin: 0 24rpx;
+}
+
+.stats-row stat-card {
+  flex: 1;
+  margin: 0 6rpx;
+}
+
+.section {
+  margin-top: 24rpx;
+}
+
+.section-title {
+  padding: 0 28rpx;
+}
+
+.cal-wrap {
+  margin: 0 24rpx;
+}
+
+/* 邀请码 */
+.invite {
+  text-align: center;
+}
+
+.invite-code {
+  font-size: 64rpx;
+  font-weight: 800;
+  letter-spacing: 12rpx;
+  color: #3BA776;
+  padding: 10rpx 0;
+}
+
+.invite-sub {
+  font-size: 24rpx;
+  color: #8A8A8A;
+  margin: 12rpx 0 24rpx;
+}
+
+/* 最近打卡 */
+.mine-list {
+  padding: 8rpx 24rpx;
+}
+
+.mi-row {
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #F3F6F3;
+}
+
+.mi-row:last-child {
+  border-bottom: none;
+}
+
+.mi-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mi-date {
+  font-size: 26rpx;
+  font-weight: 600;
+  color: #2B2B2B;
+}
+
+.mi-day {
+  font-size: 22rpx;
+  color: #999;
+}
+
+.mi-slots {
+  margin-top: 12rpx;
+}
+
+.mi-slot {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 12rpx;
+  flex-wrap: wrap;
+}
+
+.mi-slot-label {
+  flex: 0 0 48rpx;
+  font-size: 24rpx;
+  color: #fff;
+  background: #3BA776;
+  border-radius: 8rpx;
+  text-align: center;
+  padding: 4rpx 0;
+  margin-right: 16rpx;
+}
+
+.mi-photo {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 12rpx;
+  background: #F0F4F0;
+  margin-right: 16rpx;
+}
+
+.mi-text {
+  flex: 1;
+  min-width: 200rpx;
+  font-size: 26rpx;
+  color: #444;
+  line-height: 1.6;
+}
+
+.mi-time {
+  width: 100%;
+  font-size: 20rpx;
+  color: #B0B0B0;
+  margin-left: 64rpx;
+  margin-top: 4rpx;
+}
+
+.footer {
+  text-align: center;
+  color: #B0B0B0;
+  font-size: 22rpx;
+  padding: 30rpx 0 10rpx;
+}

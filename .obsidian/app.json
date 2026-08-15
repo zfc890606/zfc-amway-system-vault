@@ -1,0 +1,8 @@
+{
+  "promptDelete": false,
+  "alwaysUpdateLinks": true,
+  "excludedFiles": {
+    "_scripts": true,
+    "_scripts/**": true
+  }
+}

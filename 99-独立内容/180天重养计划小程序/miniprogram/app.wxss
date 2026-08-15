@@ -1,0 +1,103 @@
+/* 全局样式 — 180天重养计划 · 绿色系 */
+page {
+  background: #F4F8F4;
+  font-size: 28rpx;
+  color: #2B2B2B;
+  -webkit-font-smoothing: antialiased;
+}
+
+.card {
+  background: #FFFFFF;
+  border-radius: 20rpx;
+  padding: 28rpx;
+  margin: 20rpx 24rpx;
+  box-shadow: 0 2rpx 10rpx rgba(59, 167, 118, 0.08);
+}
+
+.btn-primary {
+  background: #3BA776;
+  color: #FFFFFF;
+  border-radius: 14rpx;
+  font-size: 32rpx;
+  font-weight: 600;
+}
+
+.btn-primary::after {
+  border: none;
+}
+
+.btn-primary[disabled] {
+  background: #A9D3BF;
+  color: #FFFFFF;
+}
+
+.btn-plain {
+  background: #EAF6EF;
+  color: #3BA776;
+  border-radius: 14rpx;
+  font-size: 30rpx;
+  font-weight: 500;
+}
+
+.btn-plain::after {
+  border: none;
+}
+
+.badge {
+  display: inline-block;
+  padding: 4rpx 16rpx;
+  border-radius: 8rpx;
+  color: #FFFFFF;
+  font-size: 22rpx;
+  line-height: 1.6;
+}
+
+.field {
+  margin-bottom: 24rpx;
+}
+
+.label {
+  display: block;
+  font-size: 26rpx;
+  color: #8A8A8A;
+  margin-bottom: 8rpx;
+}
+
+.input {
+  width: 100%;
+  background: #F5F8F5;
+  border-radius: 12rpx;
+  padding: 16rpx 20rpx;
+  box-sizing: border-box;
+  font-size: 28rpx;
+}
+
+.textarea {
+  width: 100%;
+  background: #F5F8F5;
+  border-radius: 12rpx;
+  padding: 16rpx 20rpx;
+  box-sizing: border-box;
+  font-size: 28rpx;
+  min-height: 120rpx;
+}
+
+.empty {
+  text-align: center;
+  color: #B0B0B0;
+  padding: 120rpx 40rpx;
+  font-size: 28rpx;
+}
+
+.section-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #2B2B2B;
+  margin-bottom: 16rpx;
+  display: flex;
+  align-items: center;
+}
+
+.section-title .sec-icon {
+  margin-right: 10rpx;
+}

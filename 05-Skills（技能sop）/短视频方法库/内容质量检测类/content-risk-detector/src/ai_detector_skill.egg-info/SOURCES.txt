@@ -1,0 +1,12 @@
+LICENSE
+README.md
+pyproject.toml
+src/ai_detector_skill.egg-info/PKG-INFO
+src/ai_detector_skill.egg-info/SOURCES.txt
+src/ai_detector_skill.egg-info/dependency_links.txt
+src/ai_detector_skill.egg-info/entry_points.txt
+src/ai_detector_skill.egg-info/top_level.txt
+src/aidetect/cli.py
+src/aidetect/core.py
+tests/test_cli.py
+tests/test_core.py

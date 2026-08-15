@@ -1,0 +1,5 @@
+<view class="stat-card">
+  <view class="sc-title">{{title}}</view>
+  <view class="sc-value" style="color: {{color}}">{{value}}</view>
+  <view class="sc-sub" wx:if="{{sub}}">{{sub}}</view>
+</view>

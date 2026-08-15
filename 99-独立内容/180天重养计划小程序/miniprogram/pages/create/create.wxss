@@ -1,0 +1,39 @@
+.page {
+  min-height: 100vh;
+  padding-bottom: 60rpx;
+}
+
+.hero {
+  padding: 60rpx 48rpx 20rpx;
+  text-align: center;
+}
+
+.hero-title {
+  font-size: 44rpx;
+  font-weight: 700;
+  color: #3BA776;
+}
+
+.hero-sub {
+  font-size: 26rpx;
+  color: #8A8A8A;
+  margin-top: 12rpx;
+}
+
+.form {
+  margin-top: 40rpx;
+}
+
+.picker-value {
+  display: flex;
+  align-items: center;
+  color: #2B2B2B;
+}
+
+.hint {
+  margin-top: 24rpx;
+  text-align: center;
+  font-size: 22rpx;
+  color: #B0B0B0;
+  line-height: 1.6;
+}

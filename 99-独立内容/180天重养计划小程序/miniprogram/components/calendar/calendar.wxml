@@ -1,0 +1,24 @@
+<view class="cal">
+  <view class="cal-row" wx:for="{{rows}}" wx:key="phase" wx:for-item="row">
+    <view class="cal-phase" style="border-left-color: {{row.color}}">
+      <text class="cal-emoji">{{row.emoji}}</text>
+      <text class="cal-title">{{row.title}}</text>
+      <text class="cal-range">{{row.range}}</text>
+    </view>
+    <view class="cal-cells">
+      <view
+        wx:for="{{row.cells}}" wx:key="dayNo" wx:for-item="cell"
+        class="cal-cell {{cell.isToday ? 'today' : ''}}"
+        style="background: {{cell.color}}"
+      >
+      </view>
+    </view>
+  </view>
+
+  <view class="cal-legend">
+    <view class="lg-item"><view class="lg-box" style="background:#EDF2ED"></view><text>未打卡</text></view>
+    <view class="lg-item"><view class="lg-box" style="background:#B5E2C7"></view><text>仅早</text></view>
+    <view class="lg-item"><view class="lg-box" style="background:#7FCFA8"></view><text>仅晚</text></view>
+    <view class="lg-item"><view class="lg-box" style="background:#2E9E6B"></view><text>早晚都有</text></view>
+  </view>
+</view>

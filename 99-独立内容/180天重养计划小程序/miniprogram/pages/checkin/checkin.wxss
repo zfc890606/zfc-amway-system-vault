@@ -1,0 +1,216 @@
+.page {
+  padding-bottom: 60rpx;
+}
+
+/* 今日信息卡 */
+.today-card {
+  margin-top: 20rpx;
+}
+
+.today-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.today-title {
+  font-size: 34rpx;
+  font-weight: 700;
+  color: #2B2B2B;
+}
+
+.today-no {
+  display: flex;
+  align-items: baseline;
+}
+
+.no-num {
+  font-size: 52rpx;
+  font-weight: 800;
+  color: #3BA776;
+}
+
+.no-unit {
+  font-size: 22rpx;
+  color: #999;
+  margin-left: 6rpx;
+}
+
+.today-phase {
+  margin-top: 14rpx;
+}
+
+.phase-badge {
+  color: #fff;
+  font-size: 22rpx;
+  padding: 4rpx 16rpx;
+  border-radius: 8rpx;
+}
+
+.today-tip {
+  margin-top: 20rpx;
+  background: #F0F8F3;
+  border-radius: 12rpx;
+  padding: 16rpx 20rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.tip-label {
+  font-size: 22rpx;
+  color: #3BA776;
+  font-weight: 600;
+}
+
+.tip-text {
+  font-size: 26rpx;
+  color: #444;
+  line-height: 1.6;
+  margin-top: 6rpx;
+}
+
+.today-notice {
+  margin-top: 20rpx;
+  text-align: center;
+  font-size: 28rpx;
+  color: #3BA776;
+  padding: 20rpx 0 10rpx;
+}
+
+/* 早/晚 Tab */
+.slot-tabs {
+  display: flex;
+  margin: 30rpx 24rpx 0;
+  background: #EAF2EC;
+  border-radius: 14rpx;
+  padding: 6rpx;
+}
+
+.slot-tab {
+  flex: 1;
+  text-align: center;
+  padding: 16rpx 0;
+  border-radius: 12rpx;
+  font-size: 28rpx;
+  color: #8A8A8A;
+  display: flex;
+  flex-direction: column;
+}
+
+.slot-tab.active {
+  background: #FFFFFF;
+  color: #3BA776;
+  font-weight: 600;
+  box-shadow: 0 2rpx 8rpx rgba(59, 167, 118, 0.15);
+}
+
+.slot-state {
+  font-size: 20rpx;
+  color: #B0B0B0;
+  margin-top: 4rpx;
+}
+
+.slot-state.done {
+  color: #3BA776;
+}
+
+/* 打卡卡片 */
+.checkin-card {
+  margin-top: 24rpx;
+}
+
+.photo-box {
+  position: relative;
+  width: 100%;
+  height: 400rpx;
+  background: #F5F8F5;
+  border-radius: 16rpx;
+  overflow: hidden;
+  border: 3rpx dashed #C9E3D3;
+  box-sizing: border-box;
+}
+
+.photo-preview {
+  width: 100%;
+  height: 100%;
+}
+
+.photo-empty {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.photo-icon {
+  font-size: 72rpx;
+}
+
+.photo-text {
+  font-size: 26rpx;
+  color: #8A8A8A;
+  margin-top: 12rpx;
+}
+
+.photo-remove {
+  position: absolute;
+  right: 16rpx;
+  top: 16rpx;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  font-size: 22rpx;
+  padding: 8rpx 16rpx;
+  border-radius: 10rpx;
+}
+
+.text-box {
+  margin-top: 20rpx;
+}
+
+.textarea {
+  min-height: 140rpx;
+}
+
+.hint {
+  margin-top: 20rpx;
+  text-align: center;
+  font-size: 22rpx;
+  color: #B0B0B0;
+}
+
+/* 已完成展示 */
+.done-box {
+  text-align: center;
+}
+
+.done-title {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #3BA776;
+  margin-bottom: 20rpx;
+}
+
+.done-photo {
+  width: 100%;
+  height: 400rpx;
+  border-radius: 16rpx;
+  background: #F0F4F0;
+}
+
+.done-text {
+  margin-top: 20rpx;
+  font-size: 28rpx;
+  color: #444;
+  line-height: 1.6;
+  background: #F7FAF7;
+  border-radius: 12rpx;
+  padding: 16rpx 20rpx;
+  text-align: left;
+}
+
+.done-time {
+  margin-top: 12rpx;
+  font-size: 22rpx;
+  color: #B0B0B0;
+}

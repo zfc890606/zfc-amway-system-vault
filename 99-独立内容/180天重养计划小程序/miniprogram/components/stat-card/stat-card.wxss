@@ -1,0 +1,27 @@
+:host {
+  display: block;
+}
+
+.stat-card {
+  background: #FFFFFF;
+  border-radius: 20rpx;
+  padding: 28rpx 20rpx;
+  text-align: center;
+  box-shadow: 0 2rpx 10rpx rgba(59, 167, 118, 0.08);
+}
+
+.sc-title {
+  font-size: 24rpx;
+  color: #8A8A8A;
+}
+
+.sc-value {
+  font-size: 48rpx;
+  font-weight: 700;
+  margin: 8rpx 0 4rpx;
+}
+
+.sc-sub {
+  font-size: 20rpx;
+  color: #B0B0B0;
+}

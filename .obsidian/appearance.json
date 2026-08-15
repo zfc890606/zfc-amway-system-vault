@@ -1,0 +1,11 @@
+{
+  "theme": "obsidian",
+  "enabledCssSnippets": [
+    "graph-glow"
+  ],
+  "cssTheme": "Blue Topaz",
+  "accentColor": "",
+  "baseFontSize": 16,
+  "baseFontSizeAction": false,
+  "translucency": false
+}

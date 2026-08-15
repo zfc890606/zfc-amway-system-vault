@@ -1,0 +1,100 @@
+:host {
+  display: block;
+}
+
+.feed-item {
+  background: #FFFFFF;
+  border-radius: 20rpx;
+  padding: 24rpx;
+  margin: 16rpx 24rpx;
+  box-shadow: 0 2rpx 10rpx rgba(59, 167, 118, 0.08);
+}
+
+.fi-head {
+  display: flex;
+  align-items: center;
+}
+
+.fi-avatar {
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: 50%;
+  background: #3BA776;
+  color: #FFFFFF;
+  font-size: 32rpx;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.fi-user {
+  flex: 1;
+  margin-left: 20rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.fi-name {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #2B2B2B;
+}
+
+.fi-day {
+  font-size: 22rpx;
+  color: #999;
+  margin-top: 4rpx;
+}
+
+.fi-badges {
+  display: flex;
+}
+
+.slot-tag {
+  font-size: 20rpx;
+  color: #FFFFFF;
+  padding: 4rpx 14rpx;
+  border-radius: 8rpx;
+  margin-left: 8rpx;
+}
+
+.slot-am {
+  background: #4FC1E9;
+}
+
+.slot-pm {
+  background: #7FCFA8;
+}
+
+.fi-body {
+  margin-top: 16rpx;
+}
+
+.fi-slot {
+  margin-top: 16rpx;
+}
+
+.fi-photo {
+  width: 100%;
+  height: 300rpx;
+  border-radius: 12rpx;
+  background: #F0F4F0;
+}
+
+.fi-text {
+  margin-top: 12rpx;
+  font-size: 28rpx;
+  color: #444;
+  line-height: 1.6;
+  background: #F7FAF7;
+  border-radius: 12rpx;
+  padding: 16rpx 20rpx;
+}
+
+.fi-time {
+  margin-top: 8rpx;
+  font-size: 20rpx;
+  color: #B0B0B0;
+}

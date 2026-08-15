@@ -1,0 +1,54 @@
+<view class="page">
+  <!-- 搜索框 -->
+  <view class="search-bar">
+    <input
+      class="search-input"
+      placeholder="搜索标题 / 主诉 / 指标…"
+      value="{{keyword}}"
+      confirm-type="search"
+      bindinput="onSearchInput"
+      bindconfirm="load"
+    />
+    <text wx:if="{{keyword}}" class="search-clear" bindtap="onClearSearch">✕</text>
+  </view>
+
+  <!-- 板块 Tab -->
+  <scroll-view class="tabs" scroll-x enhanced show-scrollbar="{{false}}">
+    <view
+      class="tab {{activeTab === '' ? 'active' : ''}}"
+      bindtap="onTab" data-key=""
+    >全部</view>
+    <view
+      wx:for="{{categories}}" wx:key="key"
+      class="tab {{activeTab === item.key ? 'active' : ''}}"
+      bindtap="onTab" data-key="{{item.key}}"
+    >{{item.emoji}} {{item.key}}</view>
+  </scroll-view>
+
+  <!-- 案例列表 -->
+  <view class="case-list">
+    <view
+      wx:for="{{cases}}" wx:key="_id"
+      class="case-card"
+      bindtap="onOpen" data-id="{{item._id}}"
+    >
+      <view class="case-title">{{item.title}}</view>
+      <view class="case-tags" wx:if="{{item.tags.length}}">
+        <text class="tag" wx:for="{{item.tags}}" wx:for-item="t" wx:key="*this">{{t}}</text>
+      </view>
+      <view class="case-meta">
+        <text class="badge" style="background:{{item.color}}">{{item.category}}</text>
+        <text class="meta-right">
+          <text class="date">{{item.updatedAtText}}</text>
+        </text>
+      </view>
+    </view>
+  </view>
+
+  <view class="empty" wx:if="{{!loading && cases.length === 0}}">
+    <view>还没有案例</view>
+    <view class="empty-sub">点击底部「新增」，粘贴案例内容，AI 帮你归类</view>
+  </view>
+
+  <view class="loading-tip" wx:if="{{loading}}">加载中…</view>
+</view>

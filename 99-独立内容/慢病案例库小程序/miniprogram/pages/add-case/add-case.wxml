@@ -1,0 +1,80 @@
+<view class="page">
+  <!-- AI 智能归类 -->
+  <view class="card">
+    <view class="ai-title">🤖 AI 智能归类</view>
+    <view class="ai-tip">粘贴案例记录（文字/语音转写），AI 自动：分板块 → 起醒目标题 → 提取客户画像与指标</view>
+    <textarea
+      class="ai-input"
+      placeholder="例：王先生，42岁，体检尿酸620，脚趾反复红肿发作，痛得走不了路。调整饮食+营养素方案3个月，尿酸降到380，一年没复发……"
+      value="{{rawText}}"
+      bindinput="onRawInput"
+      maxlength="5000"
+    />
+    <button
+      class="btn-primary ai-btn"
+      loading="{{aiLoading}}"
+      disabled="{{aiLoading}}"
+      bindtap="onAiClassify"
+    >{{aiLoading ? 'AI 归类中…' : '✨ 一键归类'}}</button>
+
+    <view class="ai-result" wx:if="{{aiResult}}">
+      <view class="ai-result-title">✅ AI 归类结果</view>
+      <view class="ai-row"><text class="ai-row-label">板块</text><text class="badge" style="background:{{aiColor}}">{{aiResult.category}}</text></view>
+      <view class="ai-row"><text class="ai-row-label">标题</text><text class="ai-row-val">{{aiResult.title}}</text></view>
+      <view class="ai-row" wx:if="{{aiResult.tags.length}}">
+        <text class="ai-row-label">标签</text>
+        <text class="tag" wx:for="{{aiResult.tags}}" wx:for-item="t" wx:key="*this">{{t}}</text>
+      </view>
+      <view class="ai-tip">以下字段已自动填充，可手动修改后再保存</view>
+    </view>
+  </view>
+
+  <!-- 案例表单 -->
+  <view class="card">
+    <view class="form-title">案例信息</view>
+
+    <view class="field">
+      <text class="label">标题 *</text>
+      <input class="input" value="{{form.title}}" bindinput="onField" data-field="title" placeholder="AI生成后可修改" />
+    </view>
+
+    <view class="field">
+      <text class="label">板块 *</text>
+      <picker range="{{categories}}" bindchange="onCategory">
+        <view class="input picker {{form.category ? '' : 'placeholder'}}">{{form.category || '点击选择板块'}}</view>
+      </picker>
+    </view>
+
+    <view class="field">
+      <text class="label">化名（脱敏）</text>
+      <input class="input" value="{{form.alias}}" bindinput="onField" data-field="alias" placeholder="如：王先生，不存全名" />
+    </view>
+
+    <view class="field">
+      <text class="label">年龄段</text>
+      <input class="input" value="{{form.ageRange}}" bindinput="onField" data-field="ageRange" placeholder="如：40-50岁" />
+    </view>
+
+    <view class="field">
+      <text class="label">主诉 / 背景</text>
+      <textarea class="textarea" value="{{form.chiefComplaint}}" bindinput="onField" data-field="chiefComplaint" placeholder="客户的主要问题与背景" />
+    </view>
+
+    <view class="field">
+      <text class="label">检查指标（变化）</text>
+      <textarea class="textarea" value="{{form.metrics}}" bindinput="onField" data-field="metrics" placeholder="如：尿酸 620→380；体重 85→72kg；空腹血糖 8.2→5.6" />
+    </view>
+
+    <view class="field">
+      <text class="label">调理方案</text>
+      <textarea class="textarea" value="{{form.plan}}" bindinput="onField" data-field="plan" placeholder="饮食/运动/营养素/生活方式调整方案" />
+    </view>
+
+    <view class="field">
+      <text class="label">结果复盘</text>
+      <textarea class="textarea" value="{{form.result}}" bindinput="onField" data-field="result" placeholder="效果如何、客户反馈、可复制经验" />
+    </view>
+
+    <button class="btn-primary save-btn" loading="{{saving}}" disabled="{{saving}}" bindtap="onSave">保存入库</button>
+  </view>
+</view>

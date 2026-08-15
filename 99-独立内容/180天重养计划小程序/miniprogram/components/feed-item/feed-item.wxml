@@ -1,0 +1,35 @@
+<view class="feed-item" wx:if="{{vm}}">
+  <view class="fi-head">
+    <view class="fi-avatar">{{vm.initial}}</view>
+    <view class="fi-user">
+      <text class="fi-name">{{vm.nickname}}</text>
+      <text class="fi-day">第 {{vm.dayNo}} 天</text>
+    </view>
+    <view class="fi-badges">
+      <text wx:if="{{vm.morning}}" class="slot-tag slot-am">早打卡 ✓</text>
+      <text wx:if="{{vm.evening}}" class="slot-tag slot-pm">晚打卡 ✓</text>
+    </view>
+  </view>
+
+  <view class="fi-body">
+    <view wx:if="{{vm.morning}}" class="fi-slot">
+      <image
+        wx:if="{{vm.morningHasPhoto}}"
+        class="fi-photo" src="{{vm.morning.photo}}" mode="aspectFill"
+        bindtap="onPreview" data-url="{{vm.morning.photo}}"
+      ></image>
+      <view wx:if="{{vm.morning.text}}" class="fi-text">{{vm.morning.text}}</view>
+      <view class="fi-time">早 {{vm.morning.timeText}}</view>
+    </view>
+
+    <view wx:if="{{vm.evening}}" class="fi-slot">
+      <image
+        wx:if="{{vm.eveningHasPhoto}}"
+        class="fi-photo" src="{{vm.evening.photo}}" mode="aspectFill"
+        bindtap="onPreview" data-url="{{vm.evening.photo}}"
+      ></image>
+      <view wx:if="{{vm.evening.text}}" class="fi-text">{{vm.evening.text}}</view>
+      <view class="fi-time">晚 {{vm.evening.timeText}}</view>
+    </view>
+  </view>
+</view>

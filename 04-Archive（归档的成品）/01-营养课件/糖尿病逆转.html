@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>糖尿病逆转 · 营养方案 · AI营养师张哥</title>
+<style>
+/* ========== RESET & BASE ========== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px}
+body{
+  font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+  background:#EDE8DC;
+  color:#000;
+  overflow:hidden;
+  height:100vh;
+  width:100vw;
+  user-select:none;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ========== GRID BACKGROUND ========== */
+.slide{
+  position:absolute;top:0;left:0;width:100%;height:100%;
+  background-color:#F5F0E8;
+  background-image:
+    linear-gradient(rgba(0,0,0,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.06) 1px, transparent 1px);
+  background-size:32px 32px;
+  background-position:0 0;
+  opacity:0;visibility:hidden;
+  transition:opacity 0.45s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.45s cubic-bezier(0.25,0.46,0.45,0.94),visibility 0.45s;
+  transform:scale(0.97);
+  overflow-y:auto;overflow-x:hidden;
+  display:flex;align-items:center;justify-content:center;
+  padding:40px;
+}
+.slide.active{opacity:1;visibility:visible;transform:scale(1);z-index:10}
+.slide.prev{opacity:0;visibility:hidden;transform:scale(0.97);z-index:5}
+
+/* ========== SLIDE INNER ========== */
+.slide-inner{
+  width:100%;max-width:1100px;margin:auto;
+  position:relative;
+}
+
+/* ========== PIXEL ICONS (CSS art) ========== */
+.pixel-icon{
+  display:inline-block;width:48px;height:48px;
+  image-rendering:pixelated;
+  position:relative;
+}
+.pixel-icon-sm{width:32px;height:32px;}
+
+/* ========== TYPOGRAPHY ========== */
+h1{
+  font-size:clamp(2.2rem,5vw,4.2rem);
+  font-weight:900;
+  letter-spacing:-0.03em;
+  line-height:1.1;
+  text-transform:uppercase;
+}
+h2{
+  font-size:clamp(1.6rem,3.5vw,3rem);
+  font-weight:900;
+  letter-spacing:-0.02em;
+  line-height:1.15;
+  margin-bottom:24px;
+  position:relative;
+  display:inline-block;
+}
+h2::after{
+  content:'';display:block;
+  width:100%;height:6px;
+  background:#000;
+  margin-top:8px;
+}
+h3{
+  font-size:clamp(1.1rem,2vw,1.6rem);
+  font-weight:800;
+  letter-spacing:-0.01em;
+  margin-bottom:12px;
+}
+.text-pink{color:#FF0066}
+.text-yellow{color:#BF9B00}
+.text-cyan{color:#00A8CC}
+.text-black{color:#000}
+.bg-pink{background:#FF0066;color:#fff}
+.bg-yellow{background:#FFD700;color:#000}
+.bg-cyan{background:#00D4FF;color:#000}
+.bg-black{background:#000;color:#fff}
+
+/* ========== MODULE BLOCKS ========== */
+.module{
+  border:3px solid #000;
+  background:#FFFCF5;
+  padding:20px 24px;
+  margin-bottom:16px;
+  position:relative;
+  box-shadow:6px 6px 0 rgba(0,0,0,0.15);
+}
+.module::before{
+  content:attr(data-label);
+  position:absolute;top:-14px;left:16px;
+  background:#000;color:#fff;
+  font-size:0.7rem;font-weight:700;
+  padding:2px 12px;text-transform:uppercase;
+  letter-spacing:0.05em;
+}
+.module.dark{background:#222;color:#f0ebe0}
+.module.dark::before{background:#FF0066;color:#fff}
+.module.pink{background:#FF0066;color:#fff}
+.module.pink::before{background:#000;color:#fff}
+.module.cyan{background:#00D4FF;color:#000}
+.module.cyan::before{background:#000;color:#fff}
+.module.yellow{background:#FFD700;color:#000}
+.module.yellow::before{background:#000;color:#fff}
+
+.module-stack{display:flex;flex-direction:column;gap:12px}
+
+/* ========== GRID LAYOUTS ========== */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
+.grid-4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:16px}
+.grid-2-1{display:grid;grid-template-columns:2fr 1fr;gap:20px}
+.grid-1-2{display:grid;grid-template-columns:1fr 2fr;gap:20px}
+@media(max-width:768px){
+  .grid-2,.grid-3,.grid-4,.grid-2-1,.grid-1-2{grid-template-columns:1fr}
+  .slide{padding:24px}
+}
+
+/* ========== BIG NUMBER ========== */
+.big-num{
+  font-size:clamp(3rem,8vw,6rem);
+  font-weight:900;
+  line-height:1;
+  letter-spacing:-0.04em;
+}
+.big-num.pink{color:#FF0066}
+.big-num.cyan{color:#00D4FF}
+.big-num.yellow{color:#FFD700}
+.big-num.black{color:#000}
+
+.stat-block{
+  border:3px solid #000;padding:20px;text-align:center;
+  background:#FFFCF5;position:relative;
+  box-shadow:4px 4px 0 rgba(0,0,0,0.12);
+}
+.stat-block .label{
+  font-size:0.85rem;font-weight:700;text-transform:uppercase;
+  letter-spacing:0.03em;margin-top:8px;color:#555;
+}
+.stat-block .sub{
+  font-size:0.75rem;margin-top:4px;color:#888;
+}
+
+/* ========== TIMELINE / STEP ========== */
+.step-box{
+  border:3px solid #000;padding:16px;
+  background:#FFFCF5;position:relative;
+  flex:1;
+}
+.step-box .step-num{
+  display:inline-block;
+  background:#000;color:#fff;
+  font-size:0.75rem;font-weight:800;
+  padding:2px 12px;margin-bottom:8px;
+  letter-spacing:0.05em;
+}
+.step-box.pink-box .step-num{background:#FF0066}
+.step-box.cyan-box .step-num{background:#00D4FF;color:#000}
+.step-box.yellow-box .step-num{background:#FFD700;color:#000}
+
+/* ========== COMPARISON TABLE ========== */
+.comp-table{width:100%;border-collapse:collapse;font-size:0.85rem}
+.comp-table th,.comp-table td{
+  border:3px solid #000;padding:10px 14px;text-align:left;
+}
+.comp-table th{
+  background:#000;color:#fff;font-weight:800;
+  text-transform:uppercase;font-size:0.75rem;letter-spacing:0.04em;
+}
+.comp-table tr:nth-child(even) td{background:#F5F0E8}
+.comp-table .highlight{background:#FFD700 !important;font-weight:700}
+.comp-table .pink-cell{background:#FF0066 !important;color:#fff}
+.comp-table .cyan-cell{background:#00D4FF !important;color:#000}
+
+/* ========== TAG / BADGE ========== */
+.tag{
+  display:inline-block;
+  border:2px solid #000;padding:4px 14px;
+  font-size:0.7rem;font-weight:700;text-transform:uppercase;
+  letter-spacing:0.04em;margin:3px;
+}
+.tag.pink{background:#FF0066;color:#fff}
+.tag.yellow{background:#FFD700;color:#000}
+.tag.cyan{background:#00D4FF;color:#000}
+.tag.black{background:#000;color:#fff}
+
+/* ========== COVER ========== */
+.cover-title{
+  font-size:clamp(2.8rem,6vw,5rem);
+  font-weight:900;line-height:1.05;
+  letter-spacing:-0.03em;text-transform:uppercase;
+  border:4px solid #000;padding:30px 40px;
+  background:#FFFCF5;
+  box-shadow:8px 8px 0 rgba(0,0,0,0.15);
+  position:relative;
+}
+.cover-title::before{
+  content:'';position:absolute;
+  top:-12px;left:-12px;right:12px;bottom:12px;
+  border:2px solid #FF0066;z-index:-1;
+}
+.cover-sub{
+  font-size:clamp(1rem,2vw,1.4rem);
+  font-weight:600;letter-spacing:0.05em;
+  margin-top:20px;display:flex;flex-wrap:wrap;gap:8px;
+}
+.cover-foot{
+  margin-top:24px;
+  font-size:0.85rem;font-weight:600;
+  display:flex;flex-wrap:wrap;gap:8px;align-items:center;
+}
+
+/* ========== SECTION DIVIDER ========== */
+.section-tag{
+  display:inline-block;
+  background:#FF0066;color:#fff;
+  font-size:0.65rem;font-weight:800;
+  padding:3px 14px;text-transform:uppercase;
+  letter-spacing:0.08em;margin-bottom:12px;
+  border:2px solid #000;
+}
+
+/* ========== PIXEL ARTS (inline SVG icons) ========== */
+.pixel-svg{display:inline-block;vertical-align:middle;width:48px;height:48px}
+
+/* ========== NOTE / ASIDE ========== */
+.note-box{
+  border:3px dashed #000;padding:12px 16px;
+  background:#F5F0E8;font-size:0.8rem;
+  margin-top:12px;
+}
+.note-box .note-icon{display:inline-block;margin-right:6px;font-weight:900}
+
+/* ========== HIGHLIGHTED BOX ========== */
+.highlight-box{
+  border:3px solid #FF0066;padding:16px 20px;
+  background:#FFF5F8;position:relative;
+  margin-top:12px;
+}
+.highlight-box::before{
+  content:'★';position:absolute;top:-14px;left:16px;
+  background:#FF0066;color:#fff;
+  font-size:0.7rem;padding:2px 12px;font-weight:700;
+}
+
+/* ========== PRODUCT LIST ========== */
+.prod-item{
+  display:flex;align-items:center;gap:10px;
+  border-bottom:2px solid #eee;padding:8px 0;
+  font-size:0.85rem;font-weight:600;
+}
+.prod-item:last-child{border-bottom:none}
+.prod-qty{
+  display:inline-block;
+  background:#000;color:#fff;
+  font-size:0.7rem;font-weight:700;
+  padding:1px 10px;white-space:nowrap;
+  min-width:32px;text-align:center;
+}
+
+/* ========== TIMELINE DIURNAL ========== */
+.timeline-row{
+  display:flex;gap:12px;margin-bottom:10px;
+  flex-wrap:wrap;
+}
+.timeline-block{
+  border:3px solid #000;padding:12px 16px;flex:1;
+  min-width:140px;background:#FFFCF5;
+  position:relative;
+}
+.timeline-block .t-time{
+  font-size:0.7rem;font-weight:800;
+  letter-spacing:0.05em;margin-bottom:4px;
+}
+.timeline-block .t-icon{font-size:1.2rem;margin-bottom:4px;}
+.timeline-block.sunrise{border-color:#FFD700}
+.timeline-block.sunrise .t-time{color:#BF9B00}
+.timeline-block.sunset{border-color:#FF0066}
+.timeline-block.sunset .t-time{color:#FF0066}
+
+/* ========== KEY-VALUE LIST ========== */
+.kv-list{list-style:none;padding:0}
+.kv-list li{
+  padding:10px 0;border-bottom:2px solid #eee;
+  display:flex;gap:12px;font-size:0.9rem;
+}
+.kv-list li:last-child{border-bottom:none}
+.kv-list .k{font-weight:800;min-width:100px;color:#555;text-transform:uppercase;font-size:0.75rem;letter-spacing:0.03em}
+.kv-list .v{font-weight:600}
+
+/* ========== NAVIGATION ========== */
+.nav-bar{
+  position:fixed;bottom:24px;left:50%;transform:translateX(-50%);
+  display:flex;align-items:center;gap:16px;
+  background:#FFFCF5;border:3px solid #000;
+  padding:10px 20px;z-index:100;
+  box-shadow:4px 4px 0 rgba(0,0,0,0.15);
+}
+.nav-btn{
+  width:40px;height:40px;border:2px solid #000;
+  background:#fff;cursor:pointer;
+  font-size:1.2rem;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+  transition:all 0.15s;
+}
+.nav-btn:hover{background:#000;color:#fff}
+.nav-btn:active{transform:scale(0.92)}
+.page-num{
+  font-size:0.85rem;font-weight:800;
+  min-width:60px;text-align:center;
+  letter-spacing:0.03em;
+}
+.progress-dots{display:flex;gap:4px}
+.progress-dots span{
+  width:8px;height:8px;border:2px solid #000;
+  background:transparent;display:block;
+  transition:all 0.2s;
+}
+.progress-dots span.active{background:#FF0066;border-color:#FF0066}
+
+/* ========== SCROLLBAR ========== */
+.slide::-webkit-scrollbar{width:6px}
+.slide::-webkit-scrollbar-track{background:#EDE8DC}
+.slide::-webkit-scrollbar-thumb{background:#000;border-radius:0}
+
+/* ========== RESPONSIVE ========== */
+@media(max-width:600px){
+  .nav-bar{gap:10px;padding:8px 14px}
+  .nav-btn{width:34px;height:34px;font-size:1rem}
+  .page-num{font-size:0.75rem;min-width:44px}
+  .module{padding:14px 16px}
+  .cover-title{padding:20px 24px}
+}
+
+/* ========== PIXEL ART SVG DECORATIONS ========== */
+.pixel-heart{color:#FF0066}
+.pixel-star{color:#FFD700}
+.pixel-diamond{color:#00D4FF}
+
+/* ========== DATA RIBBON ========== */
+.data-ribbon{
+  display:flex;gap:0;border:3px solid #000;
+  overflow:hidden;
+}
+.data-ribbon .ribbon-item{
+  flex:1;padding:14px 10px;text-align:center;
+  font-weight:700;font-size:0.75rem;
+  border-right:2px solid #000;
+}
+.data-ribbon .ribbon-item:last-child{border-right:none}
+.data-ribbon .ribbon-item .r-val{
+  font-size:clamp(1.1rem,2vw,1.6rem);display:block;
+  font-weight:900;margin-bottom:4px;
+}
+
+/* ========== PIXEL BORDER ========== */
+.pixel-border{
+  border:3px solid #000;
+  position:relative;
+}
+.pixel-border::after{
+  content:'';position:absolute;
+  top:2px;left:2px;right:-6px;bottom:-6px;
+  background:rgba(0,0,0,0.08);
+  z-index:-1;
+}
+
+/* ========== CALL TO ACTION ========== */
+.cta-block{
+  border:4px solid #FF0066;
+  background:#FFFCF5;
+  padding:24px 32px;
+  text-align:center;
+  font-weight:800;
+  font-size:clamp(1.1rem,2vw,1.5rem);
+  box-shadow:6px 6px 0 #FF0066;
+  margin-top:20px;
+}
+</style>
+</head>
+<body>
+
+<!-- ==================== SLIDE 01 - COVER ==================== -->
+<div class="slide active" data-slide="0">
+  <div class="slide-inner" style="text-align:center">
+    <div class="section-tag" style="margin-bottom:16px;font-size:0.75rem;padding:4px 20px">
+      ⬛ NUTRITION INTERVENTION ⬛
+    </div>
+
+    <div class="cover-title" style="text-align:left">
+      <div style="font-size:clamp(0.7rem,1.2vw,0.9rem);color:#888;font-weight:700;letter-spacing:0.1em;margin-bottom:8px">
+        &lt;PROTOCOL&gt; / DIABETES-REVERSAL
+      </div>
+      <span style="color:#FF0066">糖尿病逆转</span><br>
+      <span style="font-size:clamp(1.6rem,4vw,3.2rem);color:#000">DIABETES REVERSAL</span>
+      <div style="font-size:clamp(0.8rem,1.5vw,1.1rem);color:#555;font-weight:600;margin-top:12px;letter-spacing:0.02em">
+        流行病学 · 诊断标准 · 营养方案
+      </div>
+    </div>
+
+    <div class="cover-foot" style="justify-content:center;margin-top:28px">
+      <span class="tag black">EVIDENCE-BASED</span>
+      <span class="tag pink">LIFESTYLE MEDICINE</span>
+      <span class="tag cyan">NUTRITION INTERVENTION</span>
+    </div>
+
+    <div style="margin-top:28px;font-size:0.9rem;font-weight:700;color:#555;border-top:3px solid #000;padding-top:16px;display:inline-block">
+      AI营养师 张哥 · 2026
+    </div>
+
+    <div style="margin-top:20px">
+      <span class="pixel-icon">⬛⬛⬛</span>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 02 - TOC ==================== -->
+<div class="slide" data-slide="1">
+  <div class="slide-inner">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px">
+      <div class="section-tag">CONTENTS</div>
+      <div style="font-size:0.7rem;font-weight:700;color:#888;letter-spacing:0.08em;text-transform:uppercase">[ 目录 · 三篇结构 ]</div>
+    </div>
+    <div class="grid-3">
+      <div>
+        <div class="module pink" style="text-align:center;padding:16px">
+          <div style="font-size:2rem;font-weight:900;line-height:1">01</div>
+          <div style="font-weight:700;font-size:0.85rem;margin-top:4px">流行病学</div>
+        </div>
+        <ul style="list-style:none;margin-top:8px;font-size:0.82rem;font-weight:600">
+          <li style="padding:6px 0;border-bottom:1px solid #ddd">01 中国糖尿病发病率数据</li>
+          <li style="padding:6px 0;border-bottom:1px solid #ddd">02 全球趋势与慢病全景</li>
+          <li style="padding:6px 0;border-bottom:1px solid #ddd">03 症状识别与并发症预警</li>
+          <li style="padding:6px 0;border-bottom:1px solid #ddd">04 发病机制总览</li>
+        </ul>
+      </div>
+      <div>
+        <div class="module cyan" style="text-align:center;padding:16px;color:#000">
+          <div style="font-size:2rem;font-weight:900;line-height:1">02</div>
+          <div style="font-weight:700;font-size:0.85rem;margin-top:4px">诊断标准</div>
+        </div>
+        <ul style="list-style:none;margin-top:8px;font-size:0.82rem;font-weight:600">
+          <li style="padding:6px 0;border-bottom:1px solid #ddd">05 诊断金标准：血糖+HbA1c</li>
+          <li style="padding:6px 0;border-bottom:1px solid #ddd">06 C肽解读——胰岛功能透视镜</li>
+          <li style="padding:6px 0;border-bottom:1px solid #ddd">07 胰岛素抵抗的底层逻辑</li>
+          <li style="padding:6px 0;border-bottom:1px solid #ddd">08 逆转黄金人群筛选</li>
+        </ul>
+      </div>
+      <div>
+        <div class="module yellow" style="text-align:center;padding:16px;color:#000">
+          <div style="font-size:2rem;font-weight:900;line-height:1">03</div>
+          <div style="font-weight:700;font-size:0.85rem;margin-top:4px">N 逆转方案</div>
+        </div>
+        <ul style="list-style:none;margin-top:8px;font-size:0.82rem;font-weight:600">
+          <li style="padding:6px 0;border-bottom:1px solid #ddd">09-12 临床证据 &amp; 逆转定义</li>
+          <li style="padding:6px 0;border-bottom:1px solid #ddd">13-16 细胞修复 &amp; 产品体系</li>
+          <li style="padding:6px 0;border-bottom:1px solid #ddd">17-18 24h时间轴 &amp; 绿饮</li>
+          <li style="padding:6px 0;border-bottom:1px solid #ddd">19-20 案例 &amp; 行动号召</li>
+        </ul>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:16px">
+      <span class="tag">总览 · 20 SLIDES</span>
+      <span class="tag pink">← → 翻页</span>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 03 ==================== -->
+<div class="slide" data-slide="2">
+  <div class="slide-inner">
+    <div class="section-tag">PART 01 · 流行病学</div>
+    <h2>中国成人糖尿病 · 三个惊人数字</h2>
+
+    <div class="grid-3" style="margin-bottom:16px">
+      <div class="stat-block">
+        <div class="big-num pink">1.41<span style="font-size:0.5em">亿</span></div>
+        <div class="label">患病人数</div>
+        <div class="sub">全球糖尿病患者最多的国家</div>
+      </div>
+      <div class="stat-block">
+        <div class="big-num cyan">11.9<span style="font-size:0.5em">%</span></div>
+        <div class="label">患病率</div>
+        <div class="sub">每10个成年人中超过1人</div>
+      </div>
+      <div class="stat-block">
+        <div class="big-num" style="color:#FFD700">35.2<span style="font-size:0.5em">%</span></div>
+        <div class="label">糖尿病前期</div>
+        <div class="sub">超1/3成年人处于"后备军"状态</div>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <strong style="color:#FF0066">⚠ 知晓率仅 36.5%</strong><br>
+      每3个患者中近2人不知道自己已"中标"
+    </div>
+
+    <div class="note-box">
+      <span class="note-icon">📖</span> 来源：中国成人糖尿病流行病学调查 (JAMA, 2021) · IDF Diabetes Atlas
+    </div>
+
+    <div style="margin-top:12px;display:flex;gap:6px;flex-wrap:wrap">
+      <span class="tag">1.41亿</span>
+      <span class="tag pink">11.9%</span>
+      <span class="tag cyan">35.2%</span>
+      <span class="tag yellow">36.5%</span>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 04 ==================== -->
+<div class="slide" data-slide="3">
+  <div class="slide-inner">
+    <div class="section-tag">PART 01 · 慢病全景</div>
+    <h2>糖尿病是慢病"四大骑士"之一</h2>
+
+    <div class="module dark" style="margin-bottom:16px">
+      <div style="font-size:1rem;font-weight:700;color:#FF0066">🌍 全球趋势</div>
+      <div style="font-size:clamp(1rem,2vw,1.6rem);font-weight:900;margin-top:8px">
+        5.37亿<span style="font-size:0.6em;color:#888">(2021)</span>
+        <span style="color:#FFD700;font-size:0.8em"> → </span>
+        6.43亿<span style="font-size:0.6em;color:#888">(2030)</span>
+        <span style="color:#FFD700;font-size:0.8em"> → </span>
+        7.83亿<span style="font-size:0.6em;color:#888">(2045)</span>
+      </div>
+    </div>
+
+    <div class="grid-4">
+      <div class="step-box pink-box" style="text-align:center">
+        <div style="font-size:1.6rem;font-weight:900">❤️</div>
+        <div style="font-weight:700;font-size:0.8rem">心血管病</div>
+      </div>
+      <div class="step-box cyan-box" style="text-align:center">
+        <div style="font-size:1.6rem;font-weight:900">🩸</div>
+        <div style="font-weight:700;font-size:0.8rem">糖尿病代谢</div>
+      </div>
+      <div class="step-box yellow-box" style="text-align:center">
+        <div style="font-size:1.6rem;font-weight:900">🎗️</div>
+        <div style="font-weight:700;font-size:0.8rem">癌症</div>
+      </div>
+      <div class="step-box" style="text-align:center">
+        <div style="font-size:1.6rem;font-weight:900">🧠</div>
+        <div style="font-weight:700;font-size:0.8rem">阿尔茨海默</div>
+      </div>
+    </div>
+
+    <div class="module" data-label="底层共性" style="margin-top:8px">
+      <div class="grid-2" style="font-size:0.8rem;font-weight:600">
+        <div>🧬 线粒体功能障碍</div>
+        <div>🔑 胰岛素抵抗</div>
+        <div>🔥 慢性低度炎症</div>
+        <div>🧟 细胞衰老+僵尸堆积</div>
+      </div>
+    </div>
+
+    <div class="note-box">
+      <span class="note-icon">📖</span> 参考：IDF Diabetes Atlas; Peter Attia《Outlive》
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 05 ==================== -->
+<div class="slide" data-slide="4">
+  <div class="slide-inner">
+    <div class="section-tag">PART 01 · 症状识别</div>
+    <h2>典型症状 · 三多一少 + 并发症信号</h2>
+
+    <div class="grid-2">
+      <div>
+        <div class="module pink" data-label="三多一少">
+          <ul style="list-style:none;font-weight:600;font-size:0.9rem">
+            <li style="padding:6px 0">💧 多饮 — 口渴难止</li>
+            <li style="padding:6px 0;border-top:2px solid rgba(255,255,255,0.3)">🚽 多尿 — 夜尿频繁</li>
+            <li style="padding:6px 0;border-top:2px solid rgba(255,255,255,0.3)">🍽️ 多食 — 易饿</li>
+            <li style="padding:6px 0;border-top:2px solid rgba(255,255,255,0.3)">📉 体重下降 — 吃多反瘦</li>
+          </ul>
+        </div>
+        <div class="highlight-box" style="margin-top:8px">
+          <strong style="color:#FF0066">⚠ 早期往往无症状</strong> — "沉默的杀手"
+        </div>
+      </div>
+      <div>
+        <div class="module" data-label="并发症信号">
+          <ul style="list-style:none;font-weight:600;font-size:0.85rem">
+            <li style="padding:5px 0">👁️ 视力模糊 → 视网膜病变</li>
+            <li style="padding:5px 0;border-top:1px solid #eee">🦵 四肢麻木 → 周围神经病变</li>
+            <li style="padding:5px 0;border-top:1px solid #eee">🩹 伤口难愈 → 微循环障碍</li>
+            <li style="padding:5px 0;border-top:1px solid #eee">🫧 泡沫尿 → 肾小球损伤</li>
+            <li style="padding:5px 0;border-top:1px solid #eee">😫 皮肤瘙痒</li>
+          </ul>
+        </div>
+        <div class="note-box" style="margin-top:8px">
+          <span class="note-icon">◆</span> 本质：糖尿病是"全身血管病"
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 06 ==================== -->
+<div class="slide" data-slide="5">
+  <div class="slide-inner">
+    <div class="section-tag">PART 01 · 发病机制</div>
+    <h2>从细胞到宏观的发病链条 · 四个步骤</h2>
+
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px">
+      <div class="step-box pink-box" style="flex:1;min-width:160px">
+        <div class="step-num">STEP 1</div>
+        <div style="font-weight:700;font-size:0.85rem">坏油泛滥</div>
+        <div style="font-size:0.75rem;margin-top:4px;color:#666">细胞膜僵硬<br>Omega-6:Omega-3达20:1</div>
+      </div>
+      <div style="display:flex;align-items:center;font-size:1.4rem;font-weight:900;color:#FF0066">→</div>
+      <div class="step-box cyan-box" style="flex:1;min-width:160px">
+        <div class="step-num">STEP 2</div>
+        <div style="font-weight:700;font-size:0.85rem">胰岛素受体"生锈"</div>
+        <div style="font-size:0.75rem;margin-top:4px;color:#666">胰岛素抵抗 <br>锁坏了</div>
+      </div>
+      <div style="display:flex;align-items:center;font-size:1.4rem;font-weight:900;color:#FF0066">→</div>
+      <div class="step-box yellow-box" style="flex:1;min-width:160px">
+        <div class="step-num">STEP 3</div>
+        <div style="font-weight:700;font-size:0.85rem">糖进不去细胞</div>
+        <div style="font-size:0.75rem;margin-top:4px;color:#666">血液高糖→β细胞过劳</div>
+      </div>
+      <div style="display:flex;align-items:center;font-size:1.4rem;font-weight:900;color:#FF0066">→</div>
+      <div class="step-box" style="flex:1;min-width:160px">
+        <div class="step-num">STEP 4</div>
+        <div style="font-weight:700;font-size:0.85rem">内质网应激</div>
+        <div style="font-size:0.75rem;margin-top:4px;color:#666">细胞凋亡→胰岛衰竭<br>(不可逆期)</div>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <strong style="color:#FF0066">🔑 关键认知：</strong>逆转窗口在 <strong>STEP 2 → STEP 3</strong>，胰岛细胞还没坏死，只是"休眠"
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 07 ==================== -->
+<div class="slide" data-slide="6">
+  <div class="slide-inner">
+    <div class="section-tag">PART 02 · 诊断标准</div>
+    <h2>糖尿病诊断 · 三个维度</h2>
+
+    <div class="grid-3" style="margin-bottom:16px">
+      <div class="stat-block" style="text-align:left">
+        <div style="font-size:0.75rem;font-weight:800;color:#888;text-transform:uppercase;letter-spacing:0.04em">维度一</div>
+        <div style="font-size:1.1rem;font-weight:900;margin:8px 0">空腹血糖</div>
+        <div style="font-size:0.8rem;font-weight:600">
+          <span style="color:#FF0066">≥7.0</span> = 糖尿病<br>
+          <span style="color:#FFD700">6.1-7.0</span> = 前期<br>
+          <span style="color:#00D4FF">3.9-6.1</span> = 正常
+        </div>
+      </div>
+      <div class="stat-block" style="text-align:left">
+        <div style="font-size:0.75rem;font-weight:800;color:#888;text-transform:uppercase;letter-spacing:0.04em">维度二</div>
+        <div style="font-size:1.1rem;font-weight:900;margin:8px 0">餐后2h OGTT</div>
+        <div style="font-size:0.8rem;font-weight:600">
+          <span style="color:#FF0066">≥11.1</span> = 糖尿病<br>
+          <span style="color:#FFD700">7.8-11.1</span> = 前期<br>
+          <span style="color:#00D4FF">&lt;7.8</span> = 正常
+        </div>
+      </div>
+      <div class="stat-block" style="text-align:left">
+        <div style="font-size:0.75rem;font-weight:800;color:#888;text-transform:uppercase;letter-spacing:0.04em">维度三</div>
+        <div style="font-size:1.1rem;font-weight:900;margin:8px 0">糖化 HbA1c</div>
+        <div style="font-size:0.8rem;font-weight:600">
+          <span style="color:#FF0066">≥6.5%</span> = 诊断标准<br>
+          <span style="color:#FFD700">5.7%-6.4%</span> = 高风险<br>
+          <span style="color:#00D4FF">&lt;5.7%</span> = 正常
+        </div>
+      </div>
+    </div>
+
+    <div class="note-box">
+      <span class="note-icon">📖</span> 参考：ADA 2025; 中国2型糖尿病防治指南(2024)
+    </div>
+
+    <div style="margin-top:10px;display:flex;gap:6px;flex-wrap:wrap">
+      <span class="tag pink">FPG ≥7.0</span>
+      <span class="tag cyan">OGTT ≥11.1</span>
+      <span class="tag yellow">HbA1c ≥6.5%</span>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 08 ==================== -->
+<div class="slide" data-slide="7">
+  <div class="slide-inner">
+    <div class="section-tag">PART 02 · C肽解读</div>
+    <h2>C肽 · 判断逆转可能性的核心指标</h2>
+
+    <div class="grid-2">
+      <div>
+        <div class="module" data-label="空腹C肽 (0.10-0.43 ng/mL)">
+          <div style="font-size:0.85rem;font-weight:600">
+            <div style="padding:6px 0;border-bottom:2px solid #eee;display:flex;justify-content:space-between">
+              <span style="color:#FF0066">&gt;0.43</span> <span>胰岛素抵抗代偿亢进</span>
+            </div>
+            <div style="padding:6px 0;border-bottom:2px solid #eee;display:flex;justify-content:space-between">
+              <span style="color:#FFD700">0.10-0.43</span> <span>⭐逆转黄金窗口期</span>
+            </div>
+            <div style="padding:6px 0;display:flex;justify-content:space-between">
+              <span style="color:#00D4FF">&lt;0.10</span> <span>功能严重受损</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="module" data-label="餐后2h C肽 (3-5倍空腹)">
+          <div style="font-size:0.85rem;font-weight:600">
+            <div style="padding:6px 0;border-bottom:2px solid #eee">&lt;3倍 → 储备下降</div>
+            <div style="padding:6px 0;border-bottom:2px solid #eee">&gt;5倍 → 严重抵抗</div>
+            <div style="padding:6px 0">不升高 → 近乎衰竭</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <strong style="color:#FF0066">💡 临床意义：</strong>C肽不降 = 胰岛未死——只是"睡着了"，营养修复就是唤醒它
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 09 ==================== -->
+<div class="slide" data-slide="8">
+  <div class="slide-inner">
+    <div class="section-tag">PART 02 · 胰岛素抵抗</div>
+    <h2>胰岛素抵抗 · 锁坏了还是钥匙少了？</h2>
+
+    <div class="module" data-label="正常" style="margin-bottom:10px">
+      <div style="font-size:0.85rem;font-weight:600">
+        🚇 乘客(血糖) → 安保(胰岛素)刷卡 → 大门(GLUT4)打开 → 进入车厢(细胞) → 发电供能
+      </div>
+    </div>
+
+    <div class="module pink" data-label="抵抗">
+      <div style="font-size:0.85rem;font-weight:600">
+        🚇 细胞膜被Omega-6坏油浸泡 → 安检机生锈 → 安保狂刷卡大门不开 → 乘客堵在站台(高血糖) → 车厢内已超载(HbA1c↑)
+      </div>
+    </div>
+
+    <div class="grid-3" style="margin-top:10px">
+      <div class="step-box cyan-box" style="text-align:center">
+        <div style="font-size:1.4rem">🚧</div>
+        <div style="font-weight:700;font-size:0.8rem">限流</div>
+        <div style="font-size:0.7rem;color:#666">控糖饮食</div>
+      </div>
+      <div class="step-box yellow-box" style="text-align:center">
+        <div style="font-size:1.4rem">🏃</div>
+        <div style="font-weight:700;font-size:0.8rem">清空车厢</div>
+        <div style="font-size:0.7rem;color:#666">促代谢运动</div>
+      </div>
+      <div class="step-box pink-box" style="text-align:center">
+        <div style="font-size:1.4rem">🔧</div>
+        <div style="font-weight:700;font-size:0.8rem">修锁</div>
+        <div style="font-size:0.7rem;color:#666">精准营养干预</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 10 ==================== -->
+<div class="slide" data-slide="9">
+  <div class="slide-inner">
+    <div class="section-tag">PART 02 · 逆转筛选</div>
+    <h2>谁最有希望实现逆转？· 数据驱动判断</h2>
+
+    <div class="grid-4">
+      <div class="stat-block" style="text-align:left">
+        <div style="font-size:0.7rem;font-weight:800;color:#888;text-transform:uppercase">⏱ 时间窗口</div>
+        <div style="font-weight:900;font-size:1.1rem;margin:6px 0">确诊 ≤5年</div>
+        <div style="font-size:0.75rem;color:#666">年龄 &lt;65岁</div>
+      </div>
+      <div class="stat-block" style="text-align:left">
+        <div style="font-size:0.7rem;font-weight:800;color:#888;text-transform:uppercase">🔬 胰岛底线</div>
+        <div style="font-weight:900;font-size:1.1rem;margin:6px 0">C肽 ≥0.8</div>
+        <div style="font-size:0.75rem;color:#666">β细胞未坏死只是休眠</div>
+      </div>
+      <div class="stat-block" style="text-align:left">
+        <div style="font-size:0.7rem;font-weight:800;color:#888;text-transform:uppercase">📐 形体特征</div>
+        <div style="font-weight:900;font-size:1.1rem;margin:6px 0">BMI ≥24</div>
+        <div style="font-size:0.75rem;color:#666">腰围男≥90/女≥85cm</div>
+      </div>
+      <div class="stat-block" style="text-align:left">
+        <div style="font-size:0.7rem;font-weight:800;color:#888;text-transform:uppercase">💪 意愿条件</div>
+        <div style="font-weight:900;font-size:1.1rem;margin:6px 0">高度配合</div>
+        <div style="font-size:0.75rem;color:#666">生活方式干预+减重决心</div>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <strong style="color:#FF0066">📊 黄金人群画像：</strong>确诊≤5年 · 年龄&lt;65岁 · C肽≥0.8 · BMI≥24 · 高度配合意愿
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 11 ==================== -->
+<div class="slide" data-slide="10">
+  <div class="slide-inner">
+    <div class="section-tag">PART 03 · 临床证据</div>
+    <h2>86% 临床缓解率 · 循证医学数据</h2>
+
+    <div class="module dark" data-label="THE LANCET DiRECT TRIAL">
+      <div style="font-size:1rem;font-weight:700;margin-bottom:12px">历时7年 · 多中心RCT</div>
+      <div class="data-ribbon">
+        <div class="ribbon-item" style="background:#333">
+          <span class="r-val" style="color:#FFD700">7%</span>
+          &lt;5kg
+        </div>
+        <div class="ribbon-item" style="background:#444">
+          <span class="r-val" style="color:#FFD700">34%</span>
+          5-10kg
+        </div>
+        <div class="ribbon-item" style="background:#555">
+          <span class="r-val" style="color:#FFD700">57%</span>
+          10-15kg
+        </div>
+        <div class="ribbon-item" style="background:#FF0066">
+          <span class="r-val" style="color:#fff">86%</span>
+          <span style="color:#fff">≥15kg ★</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <strong style="color:#FF0066">🏆 2025 ACLM指南共识：</strong>早期2型糖尿病临床缓解率最高达 <strong style="font-size:1.2em">86%</strong>
+    </div>
+
+    <div class="note-box" style="margin-top:12px">
+      <span class="note-icon">⚠</span> 这不是偏方，不是广告——是严谨的生活方式医学实证
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 12 ==================== -->
+<div class="slide" data-slide="11">
+  <div class="slide-inner">
+    <div class="section-tag">PART 03 · 逆转定义</div>
+    <h2>临床缓解/逆转的硬性标准 · 科学不玄学</h2>
+
+    <div class="module pink" data-label="核心前提">
+      <div style="font-weight:800;font-size:1rem">
+        停用所有降糖药及胰岛素
+      </div>
+    </div>
+
+    <div class="module" data-label="连续维持3个月以上">
+      <div class="grid-3" style="font-size:0.85rem;font-weight:600;text-align:center">
+        <div>
+          <div style="font-size:1.4rem;font-weight:900;color:#FF0066">HbA1c</div>
+          <div style="color:#FF0066">&lt;6.5%</div>
+        </div>
+        <div>
+          <div style="font-size:1.4rem;font-weight:900;color:#00D4FF">空腹血糖</div>
+          <div style="color:#00D4FF">&lt;7.0</div>
+        </div>
+        <div>
+          <div style="font-size:1.4rem;font-weight:900;color:#FFD700">餐后2h</div>
+          <div style="color:#BF9B00">&lt;10.0</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="module" data-label="逆转机制">
+      <div style="font-size:0.85rem;font-weight:600">
+        内脏脂肪包裹胰腺 → 压迫β细胞 → 减脂解除压迫 → β细胞"睡醒"
+      </div>
+      <div class="note-box" style="margin-top:8px;border-color:#FF0066;background:#FFF5F8">
+        <span class="note-icon">💡</span> 逆转不是盲目停药，是身体恢复自我调节能力
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 13 ==================== -->
+<div class="slide" data-slide="12">
+  <div class="slide-inner">
+    <div class="section-tag">PART 03 · 细胞修复</div>
+    <h2>一切器官损伤，都始于细胞的分子损伤</h2>
+
+    <div class="grid-2">
+      <div class="step-box pink-box" style="margin-bottom:10px">
+        <div class="step-num">硬伤①</div>
+        <div style="font-weight:700">线粒体功能障碍</div>
+        <div style="font-size:0.75rem;color:#666">能量危机</div>
+        <div class="tag" style="margin-top:6px;font-size:0.65rem">🛠 B族+镁</div>
+      </div>
+      <div class="step-box cyan-box" style="margin-bottom:10px">
+        <div class="step-num">硬伤②</div>
+        <div style="font-weight:700">细胞膜过氧化</div>
+        <div style="font-size:0.75rem;color:#666">膜炸漏</div>
+        <div class="tag" style="margin-top:6px;font-size:0.65rem">🛠 Omega-3+维E+维C</div>
+      </div>
+      <div class="step-box yellow-box">
+        <div class="step-num">硬伤③</div>
+        <div style="font-weight:700">内质网应激</div>
+        <div style="font-size:0.75rem;color:#666">垃圾堵死工厂</div>
+        <div class="tag" style="margin-top:6px;font-size:0.65rem">🛠 优质蛋白+槲皮素</div>
+      </div>
+      <div class="step-box">
+        <div class="step-num">硬伤④</div>
+        <div style="font-weight:700">僵尸细胞堆积</div>
+        <div style="font-size:0.75rem;color:#666">衰老污染</div>
+        <div class="tag" style="margin-top:6px;font-size:0.65rem">🛠 槲皮素(基源欣活)</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 14 ==================== -->
+<div class="slide" data-slide="13">
+  <div class="slide-inner">
+    <div class="section-tag">PART 03 · 修复量</div>
+    <h2>日常推荐量 ≠ 身体修复量</h2>
+
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>营养素</th>
+          <th>日常推荐量</th>
+          <th>修复推荐量</th>
+          <th>倍数</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>蛋白质</td><td>55-65g</td><td class="cyan-cell">72-96g</td><td>×1.5</td></tr>
+        <tr><td>Omega-3</td><td>≈0.1g</td><td class="pink-cell">3.0-4.0g</td><td class="highlight">×30</td></tr>
+        <tr><td>B1</td><td>1.4mg</td><td class="cyan-cell">25-50mg</td><td class="highlight">×20</td></tr>
+        <tr><td>B6</td><td>1.4mg</td><td class="cyan-cell">30-60mg</td><td class="highlight">×30</td></tr>
+        <tr><td>维C</td><td>100mg</td><td class="cyan-cell">500-1000mg</td><td>×8</td></tr>
+        <tr><td>镁</td><td>330mg</td><td class="cyan-cell">500-800mg</td><td>×2</td></tr>
+      </tbody>
+    </table>
+
+    <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap">
+      <div class="tag black">基础量 = "饿不死"</div>
+      <div class="tag pink">修复量 = "好起来"</div>
+    </div>
+
+    <div class="highlight-box" style="margin-top:10px">
+      <strong style="color:#FF0066">💡 关键概念：</strong>糖尿病患者需要 <strong>"治疗性修复剂量 (TRD)"</strong>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 15 ==================== -->
+<div class="slide" data-slide="14">
+  <div class="slide-inner">
+    <div class="section-tag">PART 03 · 三位一体</div>
+    <h2>三位一体胰岛修复 · 系统工程</h2>
+
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:12px">
+      <div class="step-box pink-box" style="flex:1;min-width:180px;text-align:center">
+        <div style="font-size:2rem;font-weight:900">STEP 1</div>
+        <div class="step-num" style="margin-bottom:6px">控 · 科学管控</div>
+        <div style="font-size:0.8rem;font-weight:600">生活方式管理+控糖饮食</div>
+        <div style="font-size:0.75rem;color:#666;margin-top:4px">平稳血糖 → 创造修复窗口</div>
+      </div>
+      <div class="step-box cyan-box" style="flex:1;min-width:180px;text-align:center">
+        <div style="font-size:2rem;font-weight:900">STEP 2</div>
+        <div class="step-num" style="background:#00D4FF;color:#000;margin-bottom:6px">养 · 营养修复</div>
+        <div style="font-size:0.8rem;font-weight:600">补足TRD+纽崔莱全谱精准营养</div>
+        <div style="font-size:0.75rem;color:#666;margin-top:4px">补充修复原料 → 唤醒胰岛功能</div>
+      </div>
+      <div class="step-box yellow-box" style="flex:1;min-width:180px;text-align:center">
+        <div style="font-size:2rem;font-weight:900">STEP 3</div>
+        <div class="step-num" style="background:#FFD700;color:#000;margin-bottom:6px">提 · 耐受训练</div>
+        <div style="font-size:0.8rem;font-weight:600">糖耐量训练+有氧抗阻双引擎</div>
+        <div style="font-size:0.75rem;color:#666;margin-top:4px">重建葡萄糖处理能力</div>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <strong style="color:#FF0066">💡 核心理念：</strong>不靠药物硬压，唤醒身体本自具足的代谢力
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 16 ==================== -->
+<div class="slide" data-slide="15">
+  <div class="slide-inner">
+    <div class="section-tag">PART 03 · 产品体系</div>
+    <h2>纽崔莱 · 糖尿病逆转核心单品</h2>
+
+    <div class="grid-2">
+      <div>
+        <div class="module" data-label="8大核心单品" style="font-size:0.82rem">
+          <div class="prod-item"><span class="prod-qty">5-6勺</span><span style="font-weight:700">植物蛋白粉</span><span style="color:#888">修复原料</span></div>
+          <div class="prod-item"><span class="prod-qty">10粒</span><span style="font-weight:700">高纯深海鱼油</span><span style="color:#888">换膜抗炎</span></div>
+          <div class="prod-item"><span class="prod-qty">2对</span><span style="font-weight:700">倍立健</span><span style="color:#888">全谱打底</span></div>
+          <div class="prod-item"><span class="prod-qty">3片</span><span style="font-weight:700">天然B族</span><span style="color:#888">线粒体充电</span></div>
+          <div class="prod-item"><span class="prod-qty">3片</span><span style="font-weight:700">钙镁片</span><span style="color:#888">防钙超载</span></div>
+          <div class="prod-item"><span class="prod-qty">2条</span><span style="font-weight:700">基源欣活</span><span style="color:#888">清僵尸细胞</span></div>
+          <div class="prod-item"><span class="prod-qty">4片</span><span style="font-weight:700">针叶樱桃VC</span><span style="color:#888">防锈护肝</span></div>
+          <div class="prod-item"><span class="prod-qty">4粒</span><span style="font-weight:700">小麦胚芽油VE</span><span style="color:#888">脂溶固膜</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="module pink" data-label="关键营养素" style="font-size:0.82rem">
+          <div class="prod-item"><span class="prod-qty">Cr 200-400μg</span> <span style="font-weight:700">铬</span> <span style="color:rgba(255,255,255,0.7)">→ 修复胰岛素抵抗</span></div>
+          <div class="prod-item"><span class="prod-qty">3.0-4.0g</span> <span style="font-weight:700">Omega-3</span> <span style="color:rgba(255,255,255,0.7)">→ 换膜抗炎</span></div>
+          <div class="prod-item"><span class="prod-qty">500-800mg</span> <span style="font-weight:700">镁</span> <span style="color:rgba(255,255,255,0.7)">→ 防钙超载</span></div>
+          <div class="prod-item"><span class="prod-qty">25-50mg</span> <span style="font-weight:700">B族</span> <span style="color:rgba(255,255,255,0.7)">→ 线粒体供能</span></div>
+          <div class="prod-item"><span class="prod-qty">35-45g</span> <span style="font-weight:700">膳食纤维</span> <span style="color:rgba(255,255,255,0.7)">→ 延缓糖吸收</span></div>
+        </div>
+        <div class="note-box" style="margin-top:8px">
+          <span class="note-icon">💡</span> 修复量 ≠ 日常量，差一个数量级
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 17 ==================== -->
+<div class="slide" data-slide="16">
+  <div class="slide-inner">
+    <div class="section-tag">PART 03 · 时间轴</div>
+    <h2>昼夜协同 · 白天建新房 晚上拆危房</h2>
+
+    <div class="timeline-row">
+      <div class="timeline-block sunrise" style="flex:2">
+        <div class="t-time" style="font-size:0.85rem">🌅 08:00 早餐</div>
+        <div style="font-size:0.75rem;font-weight:600">2勺蛋白+倍立健+B族+鱼油3粒+VC+VE</div>
+        <div style="font-size:0.65rem;color:#888;margin-top:4px">激活全天修复</div>
+      </div>
+      <div class="timeline-block" style="flex:1">
+        <div class="t-time" style="font-size:0.85rem">🕛 12:00 午餐</div>
+        <div style="font-size:0.75rem;font-weight:600">1勺蛋白+B族+钙镁+鱼油3粒</div>
+        <div style="font-size:0.65rem;color:#888;margin-top:4px">拦截Omega-6</div>
+      </div>
+      <div class="timeline-block" style="flex:1">
+        <div class="t-time" style="font-size:0.85rem">🕒 16:00 加餐</div>
+        <div style="font-size:0.75rem;font-weight:600">1勺蛋白粉(ONS补充)</div>
+        <div style="font-size:0.65rem;color:#888;margin-top:4px">防肌肉流失</div>
+      </div>
+    </div>
+
+    <div class="timeline-row">
+      <div class="timeline-block" style="flex:1">
+        <div class="t-time" style="font-size:0.85rem">🌙 18:00 晚餐</div>
+        <div style="font-size:0.75rem;font-weight:600">1勺蛋白+倍立健+男士+B族+钙镁2+鱼油3+VC+VE</div>
+        <div style="font-size:0.65rem;color:#888;margin-top:4px">夜间储备</div>
+      </div>
+      <div class="timeline-block sunset" style="flex:1.5">
+        <div class="t-time" style="font-size:0.85rem">🌌 21:30 睡前</div>
+        <div style="font-size:0.75rem;font-weight:600">基源欣活2条</div>
+        <div style="font-size:0.65rem;color:#888;margin-top:4px">16+8禁食最大化清淤</div>
+      </div>
+    </div>
+
+    <div class="highlight-box" style="margin-top:8px">
+      <strong style="color:#FF0066">⏰ 关键窗口：</strong>夜间禁食期(16+8)最大化自噬清淤，基源欣活靶向清除僵尸细胞
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 18 ==================== -->
+<div class="slide" data-slide="17">
+  <div class="slide-inner">
+    <div class="section-tag">PART 03 · 绿饮</div>
+    <h2>胰岛修复绿饮 · 每日一杯</h2>
+
+    <div class="grid-2">
+      <div>
+        <div class="module" data-label="基础食材" style="margin-bottom:10px">
+          <ul style="list-style:none;font-size:0.85rem;font-weight:600">
+            <li style="padding:5px 0">🥬 有机生菜 50g</li>
+            <li style="padding:5px 0;border-top:1px solid #eee">🥕 有机胡萝卜 50g</li>
+            <li style="padding:5px 0;border-top:1px solid #eee">🫑 有机彩椒 50g</li>
+            <li style="padding:5px 0;border-top:1px solid #eee">🥑 牛油果 半个</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <div class="module pink" data-label="功能营养素">
+          <ul style="list-style:none;font-size:0.85rem;font-weight:600">
+            <li style="padding:5px 0">🥄 蛋白粉 1勺</li>
+            <li style="padding:5px 0;border-top:1px solid rgba(255,255,255,0.3)">🟡 姜黄维C粉 10g</li>
+            <li style="padding:5px 0;border-top:1px solid rgba(255,255,255,0.3)">🟤 肉桂粉 5g</li>
+            <li style="padding:5px 0;border-top:1px solid rgba(255,255,255,0.3)">🟠 卵磷脂粉 10g</li>
+            <li style="padding:5px 0;border-top:1px solid rgba(255,255,255,0.3)">💧 亚麻籽油 7.5ml</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="module" data-label="制作方法" style="margin-bottom:8px">
+      <div style="font-size:0.85rem;font-weight:600">
+        🔄 破壁机1分钟，早餐随餐饮用
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <strong style="color:#FF0066">📊 效果：</strong>降低餐后血糖峰值 <strong>15-20%</strong>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 19 ==================== -->
+<div class="slide" data-slide="18">
+  <div class="slide-inner">
+    <div class="section-tag">PART 03 · 案例见证</div>
+    <h2>数据说话 · 逆转之路</h2>
+
+    <div class="grid-2">
+      <div class="module cyan" data-label="案例一" style="color:#000">
+        <div style="font-weight:800;font-size:1rem">👩 37岁女性 · 病程5年</div>
+        <div style="font-size:0.85rem;font-weight:600;margin-top:6px">
+          HbA1c 8.6% → <strong>5.6%</strong><br>
+          减重 <strong>15.8kg</strong><br>
+          停全部降糖药 · 2年无反弹
+        </div>
+      </div>
+      <div class="module pink" data-label="案例二">
+        <div style="font-weight:800;font-size:1rem">👨 28岁男性 · 确诊5年</div>
+        <div style="font-size:0.85rem;font-weight:600;margin-top:6px">
+          HbA1c 8.7% → <strong>5.7%</strong><br>
+          减重 <strong>18kg</strong><br>
+          完全停药 · 持续缓解3年
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-2" style="margin-top:10px">
+      <div class="stat-block">
+        <div class="big-num" style="color:#00D4FF">0% → 100%</div>
+        <div class="label">TIR（一个月）</div>
+      </div>
+      <div class="stat-block">
+        <div class="big-num" style="color:#FF0066">0.09 → 1.45</div>
+        <div class="label">C肽提升 (ng/mL)</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 20 ==================== -->
+<div class="slide" data-slide="19">
+  <div class="slide-inner" style="text-align:center">
+    <div class="section-tag" style="margin-bottom:20px">SUMMARY · 总结</div>
+
+    <h2 style="text-align:center;display:block">三条核心信息 · 一个行动选择</h2>
+
+    <div class="grid-3" style="margin-bottom:20px">
+      <div class="module pink" style="text-align:center">
+        <div style="font-size:1.5rem;font-weight:900">01</div>
+        <div style="font-size:0.8rem;font-weight:600">中国1.41亿糖病患者</div>
+        <div style="font-size:0.7rem;color:rgba(255,255,255,0.8)">知晓率仅36.5%</div>
+      </div>
+      <div class="module cyan" style="text-align:center;color:#000">
+        <div style="font-size:1.5rem;font-weight:900">02</div>
+        <div style="font-size:0.8rem;font-weight:600">C肽决定逆转可能性</div>
+        <div style="font-size:0.7rem;color:#555">确诊5年内是黄金窗口</div>
+      </div>
+      <div class="module yellow" style="text-align:center;color:#000">
+        <div style="font-size:1.5rem;font-weight:900">03</div>
+        <div style="font-size:0.8rem;font-weight:600">86%逆转率有循证支持</div>
+        <div style="font-size:0.7rem;color:#555">修复量 ≠ 日常量，差一个数量级</div>
+      </div>
+    </div>
+
+    <div class="cta-block">
+      🔑 逆转不是"神药"——是重新掌控自己身体的钥匙
+    </div>
+
+    <div style="margin-top:24px;font-size:1rem;font-weight:800;color:#555;border-top:3px solid #000;padding-top:16px;display:inline-block">
+      AI营养师 张哥 · 让每个普通人拥有一个可触及的新身份
+    </div>
+  </div>
+</div>
+
+<!-- ==================== NAVIGATION ==================== -->
+<div class="nav-bar" id="navBar">
+  <button class="nav-btn" id="prevBtn" aria-label="上一页">←</button>
+  <div class="page-num" id="pageNum">1 / 20</div>
+  <div class="progress-dots" id="progressDots"></div>
+  <button class="nav-btn" id="nextBtn" aria-label="下一页">→</button>
+</div>
+
+<script>
+(function(){
+  const slides = document.querySelectorAll('.slide');
+  const total = slides.length;
+  let current = 0;
+  const pageNum = document.getElementById('pageNum');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const dotsContainer = document.getElementById('progressDots');
+
+  // Build dots
+  for(let i=0; i<total; i++){
+    const dot = document.createElement('span');
+    dot.dataset.index = i;
+    dot.addEventListener('click', function(){
+      goTo(parseInt(this.dataset.index));
+    });
+    dotsContainer.appendChild(dot);
+  }
+
+  function update(){
+    slides.forEach((el,i)=>{
+      el.classList.remove('active','prev');
+      if(i === current){
+        el.classList.add('active');
+      } else if(i < current){
+        // Keep them hidden but in flow
+      }
+    });
+    pageNum.textContent = (current+1) + ' / ' + total;
+    const dots = dotsContainer.querySelectorAll('span');
+    dots.forEach((d,i)=>{
+      d.classList.toggle('active', i===current);
+    });
+  }
+
+  function goTo(n){
+    if(n < 0) n = 0;
+    if(n >= total) n = total - 1;
+    if(n === current) return;
+    // Add transition direction hint
+    slides.forEach(el => el.style.transition = '');
+    current = n;
+    update();
+  }
+
+  function next(){ goTo(current+1); }
+  function prev(){ goTo(current-1); }
+
+  // Keyboard
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' '){
+      e.preventDefault();
+      next();
+    } else if(e.key === 'ArrowLeft' || e.key === 'ArrowUp'){
+      e.preventDefault();
+      prev();
+    } else if(e.key === 'Home'){
+      e.preventDefault();
+      goTo(0);
+    } else if(e.key === 'End'){
+      e.preventDefault();
+      goTo(total-1);
+    }
+  });
+
+  prevBtn.addEventListener('click', prev);
+  nextBtn.addEventListener('click', next);
+
+  // Touch support
+  let touchStartX = 0;
+  document.addEventListener('touchstart', function(e){
+    touchStartX = e.changedTouches[0].screenX;
+  });
+  document.addEventListener('touchend', function(e){
+    const diff = touchStartX - e.changedTouches[0].screenX;
+    if(Math.abs(diff) > 50){
+      if(diff > 0) next();
+      else prev();
+    }
+  });
+
+  // Mouse wheel
+  document.addEventListener('wheel', function(e){
+    if(e.deltaY > 0) next();
+    else prev();
+  }, {passive: true});
+
+  update();
+})();
+</script>
+</body>
+</html>

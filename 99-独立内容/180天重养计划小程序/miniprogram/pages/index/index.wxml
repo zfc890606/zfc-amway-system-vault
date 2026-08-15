@@ -1,0 +1,96 @@
+<view class="page">
+  <!-- ═══ 顶部：今日进度 + 今日提示 ═══ -->
+  <view class="hero card">
+    <view class="hero-top">
+      <view class="hero-title">{{planName}}</view>
+      <view class="hero-day">
+        <text class="day-num">{{todayDayNo}}</text>
+        <text class="day-unit">/ 180 天</text>
+      </view>
+    </view>
+    <view class="hero-phase" wx:if="{{phase}}">
+      <text class="phase-badge" style="background:{{phase.color}}">{{phase.emoji}} {{phase.title}}</text>
+      <text class="phase-range">{{phase.range}}</text>
+    </view>
+    <view class="hero-tip" wx:if="{{tip}}">
+      <text class="tip-label">🌿 今日重养小提示</text>
+      <text class="tip-text">{{tip}}</text>
+    </view>
+  </view>
+
+  <!-- ═══ 模块一：今日动态 ═══ -->
+  <view class="section">
+    <view class="section-title"><text class="sec-icon">📣</text>今日动态</view>
+    <block wx:if="{{feed.length}}">
+      <feed-item wx:for="{{feed}}" wx:key="id" item="{{item}}" />
+    </block>
+    <view class="empty card" wx:else>今天还没有人打卡，来做第一个吧 👀</view>
+  </view>
+
+  <!-- ═══ 模块二：180天日历格 ═══ -->
+  <view class="section">
+    <view class="section-title"><text class="sec-icon">📅</text>打卡日历</view>
+    <scroll-view class="member-bar" scroll-x enhanced show-scrollbar="{{false}}">
+      <view
+        wx:for="{{members}}" wx:key="openid"
+        class="member-chip {{activeOpenid === item.openid ? 'active' : ''}}"
+        bindtap="onSwitchMember" data-openid="{{item.openid}}"
+      >
+        <text class="m-name">{{item.nickname}}</text>
+        <text class="m-streak">🔥{{item.currentStreak}}天</text>
+      </view>
+    </scroll-view>
+
+    <view class="cal-wrap" wx:if="{{activeMember}}">
+      <calendar dayStatus="{{activeMember.dayStatus}}" todayIdx="{{todayDayNo - 1}}" />
+    </view>
+    <view class="empty card" wx:else>还没有成员</view>
+  </view>
+
+  <!-- ═══ 模块三：连续打卡排行榜 ═══ -->
+  <view class="section">
+    <view class="section-title"><text class="sec-icon">🏆</text>连续打卡排行榜</view>
+    <view class="card leaderboard">
+      <view
+        wx:for="{{leaderboard}}" wx:key="rank"
+        class="lb-row {{item.rank <= 3 ? 'top' + item.rank : ''}}"
+      >
+        <text class="lb-rank">{{item.rank}}</text>
+        <view class="lb-name">
+          <text class="lb-nick">{{item.nickname}}</text>
+          <text class="lb-sub">共打卡 {{item.totalDays}} 天 · 早晚完整 {{item.fullDays}} 天</text>
+        </view>
+        <view class="lb-streak">🔥 {{item.currentStreak}} 天</view>
+      </view>
+      <view class="empty" wx:if="{{!leaderboard.length}}">暂无排行数据</view>
+    </view>
+  </view>
+
+  <!-- ═══ 模块四：完成率统计 ═══ -->
+  <view class="section">
+    <view class="section-title"><text class="sec-icon">📊</text>完成率统计</view>
+    <view class="stats-row">
+      <stat-card title="参与成员" value="{{memberCount}}" sub="人" color="#3BA776" />
+      <stat-card title="全员完成率" value="{{completionRate}}%" sub="早晚都算·严格口径" color="#E86A8C" />
+      <stat-card title="进行天数" value="{{elapsedDays}}" sub="/ 180 天" color="#4FC1E9" />
+    </view>
+
+    <view class="card trend">
+      <view class="trend-title">阶段趋势</view>
+      <view class="trend-item" wx:for="{{phaseTrend}}" wx:key="phase" wx:for-item="p">
+        <text class="trend-label" wx:if="{{p.phase === 1}}">🌱 觉醒</text>
+        <text class="trend-label" wx:elif="{{p.phase === 2}}">💪 活力</text>
+        <text class="trend-label" wx:elif="{{p.phase === 3}}">🫧 内在</text>
+        <text class="trend-label" wx:elif="{{p.phase === 4}}">🤝 关系</text>
+        <text class="trend-label" wx:elif="{{p.phase === 5}}">🚀 行动</text>
+        <text class="trend-label" wx:else>🌟 实现</text>
+        <view class="trend-bar-bg">
+          <view class="trend-bar" style="width: {{p.rate}}%; background: {{p.color}}"></view>
+        </view>
+        <text class="trend-rate">{{p.rate}}%</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="footer">180天 · 把自己重新养一遍</view>
+</view>

@@ -11,6 +11,15 @@ Thumbs.db
 .obsidian/workspace.json
 .obsidian/workspace
 
+# Obsidian plugin runtime state (may contain API keys / private keys)
+.obsidian/plugins/*/data.json
+
+# Claude 会话记录（隐私，不入库）
+.claudian/
+
+# Wiki 备份产物
+.wiki-backup-*/
+
 # Large binary files
 *.pptx
 *.ppt
@@ -45,3 +54,7 @@ env/
 *.swp
 *.swo
 *~
+
+# 飞书文案库同步（含 App Secret，不入库）
+99-独立内容/飞书文案库同步/config.json
+99-独立内容/飞书文案库同步/.sync_state.json

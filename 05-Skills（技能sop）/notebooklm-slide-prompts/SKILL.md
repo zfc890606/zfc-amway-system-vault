@@ -596,8 +596,7 @@ Common: Text on left, visual on right; three-column feature cards; one idea per 
 
 ## Neo-Retro Dev Deck
 
-**风格**：复古未来主义·像素信息图·开发者中心·工程笔记本感
-
+风格
 ![Preview](https://hackmd.io/_uploads/HykAwBRf-l.png)
 
 ````

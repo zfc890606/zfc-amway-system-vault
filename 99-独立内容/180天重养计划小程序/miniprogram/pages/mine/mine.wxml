@@ -1,0 +1,72 @@
+<view class="page">
+  <!-- 个人头部 -->
+  <view class="profile card">
+    <view class="pf-left">
+      <view class="pf-avatar">{{initial}}</view>
+      <view class="pf-info">
+        <view class="pf-name">
+          {{nickname}}
+          <text class="pf-owner" wx:if="{{isOwner}}">发起人</text>
+        </view>
+        <view class="pf-sub">{{planName}} · {{joinedAtText}} 加入</view>
+      </view>
+    </view>
+    <view class="pf-edit" bindtap="onChangeNickname">改昵称</view>
+  </view>
+
+  <!-- 统计 -->
+  <view class="stats-row">
+    <stat-card title="当前连续" value="{{currentStreak}}" sub="天" color="#E86A8C" />
+    <stat-card title="最佳连续" value="{{bestStreak}}" sub="天" color="#F5A623" />
+    <stat-card title="打卡天数" value="{{totalDays}}" sub="天" color="#4FC1E9" />
+    <stat-card title="早晚完整" value="{{fullDays}}" sub="天" color="#3BA776" />
+  </view>
+
+  <!-- 我的日历格 -->
+  <view class="section">
+    <view class="section-title"><text class="sec-icon">📅</text>我的打卡日历</view>
+    <view class="cal-wrap">
+      <calendar dayStatus="{{dayStatus}}" todayIdx="{{todayIdx}}" />
+    </view>
+  </view>
+
+  <!-- 邀请码（仅发起人） -->
+  <view class="section" wx:if="{{isOwner && inviteCode}}">
+    <view class="section-title"><text class="sec-icon">🎟️</text>邀请伙伴</view>
+    <view class="card invite">
+      <view class="invite-code" bindtap="onCopyCode">{{inviteCode}}</view>
+      <view class="invite-sub">分享邀请码给伙伴，一起加入「{{planName}}」</view>
+      <button class="btn-plain" bindtap="onCopyCode">复制邀请码</button>
+    </view>
+  </view>
+
+  <!-- 最近打卡明细 -->
+  <view class="section">
+    <view class="section-title"><text class="sec-icon">📜</text>最近打卡</view>
+    <view class="card mine-list" wx:if="{{checkins.length}}">
+      <view class="mi-row" wx:for="{{checkins}}" wx:key="id">
+        <view class="mi-head">
+          <text class="mi-date">{{item.dateText}}</text>
+          <text class="mi-day">第 {{item.dayNo}} 天</text>
+        </view>
+        <view class="mi-slots">
+          <view class="mi-slot" wx:if="{{item.morning}}">
+            <view class="mi-slot-label">早</view>
+            <image wx:if="{{item.morning.photo}}" class="mi-photo" src="{{item.morning.photo}}" mode="aspectFill" bindtap="onPreview" data-url="{{item.morning.photo}}"></image>
+            <text wx:if="{{item.morning.text}}" class="mi-text">{{item.morning.text}}</text>
+            <text class="mi-time">{{item.morning.timeText}}</text>
+          </view>
+          <view class="mi-slot" wx:if="{{item.evening}}">
+            <view class="mi-slot-label">晚</view>
+            <image wx:if="{{item.evening.photo}}" class="mi-photo" src="{{item.evening.photo}}" mode="aspectFill" bindtap="onPreview" data-url="{{item.evening.photo}}"></image>
+            <text wx:if="{{item.evening.text}}" class="mi-text">{{item.evening.text}}</text>
+            <text class="mi-time">{{item.evening.timeText}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="empty card" wx:else>还没有打卡记录，去打个卡吧 🌱</view>
+  </view>
+
+  <view class="footer">180天 · 把自己重新养一遍</view>
+</view>

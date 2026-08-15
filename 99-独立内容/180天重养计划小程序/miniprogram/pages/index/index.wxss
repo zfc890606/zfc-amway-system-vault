@@ -1,0 +1,247 @@
+.page {
+  padding-bottom: 40rpx;
+}
+
+/* 顶部 hero */
+.hero {
+  margin-top: 20rpx;
+}
+
+.hero-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.hero-title {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #2B2B2B;
+}
+
+.hero-day {
+  display: flex;
+  align-items: baseline;
+}
+
+.day-num {
+  font-size: 56rpx;
+  font-weight: 800;
+  color: #3BA776;
+}
+
+.day-unit {
+  font-size: 24rpx;
+  color: #999;
+  margin-left: 6rpx;
+}
+
+.hero-phase {
+  margin-top: 16rpx;
+  display: flex;
+  align-items: center;
+}
+
+.phase-badge {
+  color: #fff;
+  font-size: 22rpx;
+  padding: 4rpx 16rpx;
+  border-radius: 8rpx;
+}
+
+.phase-range {
+  font-size: 22rpx;
+  color: #999;
+  margin-left: 12rpx;
+}
+
+.hero-tip {
+  margin-top: 20rpx;
+  background: #F0F8F3;
+  border-radius: 12rpx;
+  padding: 16rpx 20rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.tip-label {
+  font-size: 22rpx;
+  color: #3BA776;
+  font-weight: 600;
+}
+
+.tip-text {
+  font-size: 26rpx;
+  color: #444;
+  line-height: 1.6;
+  margin-top: 6rpx;
+}
+
+/* 区块 */
+.section {
+  margin-top: 20rpx;
+}
+
+.section-title {
+  padding: 0 28rpx;
+}
+
+/* 成员切换 */
+.member-bar {
+  white-space: nowrap;
+  padding: 8rpx 24rpx 16rpx;
+  box-sizing: border-box;
+}
+
+.member-chip {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  background: #FFFFFF;
+  border-radius: 16rpx;
+  padding: 12rpx 24rpx;
+  margin-right: 16rpx;
+  border: 3rpx solid transparent;
+  box-shadow: 0 2rpx 8rpx rgba(59, 167, 118, 0.08);
+}
+
+.member-chip.active {
+  border-color: #3BA776;
+  background: #F0F8F3;
+}
+
+.m-name {
+  font-size: 26rpx;
+  font-weight: 600;
+  color: #2B2B2B;
+}
+
+.m-streak {
+  font-size: 20rpx;
+  color: #E86A8C;
+  margin-top: 4rpx;
+}
+
+.cal-wrap {
+  margin: 0 24rpx;
+}
+
+/* 排行榜 */
+.leaderboard {
+  padding: 12rpx 24rpx;
+}
+
+.lb-row {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #F3F6F3;
+}
+
+.lb-row:last-child {
+  border-bottom: none;
+}
+
+.lb-rank {
+  width: 48rpx;
+  height: 48rpx;
+  border-radius: 50%;
+  background: #EEF2EE;
+  color: #999;
+  font-size: 24rpx;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.lb-row.top1 .lb-rank { background: #FFD966; color: #8A6100; }
+.lb-row.top2 .lb-rank { background: #D9D9D9; color: #666; }
+.lb-row.top3 .lb-rank { background: #E8A87C; color: #7A4A1F; }
+
+.lb-name {
+  flex: 1;
+  margin-left: 20rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.lb-nick {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #2B2B2B;
+}
+
+.lb-sub {
+  font-size: 20rpx;
+  color: #B0B0B0;
+  margin-top: 2rpx;
+}
+
+.lb-streak {
+  font-size: 26rpx;
+  font-weight: 600;
+  color: #E86A8C;
+}
+
+/* 统计 */
+.stats-row {
+  display: flex;
+  margin: 0 24rpx;
+}
+
+.stats-row stat-card {
+  flex: 1;
+  margin: 0 8rpx;
+}
+
+.trend {
+  margin-top: 20rpx;
+}
+
+.trend-title {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #2B2B2B;
+  margin-bottom: 16rpx;
+}
+
+.trend-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 14rpx;
+}
+
+.trend-label {
+  flex: 0 0 90rpx;
+  font-size: 22rpx;
+  color: #666;
+}
+
+.trend-bar-bg {
+  flex: 1;
+  height: 20rpx;
+  background: #F0F2F0;
+  border-radius: 10rpx;
+  overflow: hidden;
+}
+
+.trend-bar {
+  height: 100%;
+  border-radius: 10rpx;
+}
+
+.trend-rate {
+  flex: 0 0 64rpx;
+  text-align: right;
+  font-size: 22rpx;
+  color: #666;
+}
+
+.footer {
+  text-align: center;
+  color: #B0B0B0;
+  font-size: 22rpx;
+  padding: 30rpx 0 10rpx;
+}

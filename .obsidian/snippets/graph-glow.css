@@ -1,0 +1,181 @@
+/*
+ * Obsidian Graph View - 全息光纤风格 (Holographic Glow) v2
+ * -----------------------------------------------------------
+ * 用法:
+ *   1. 复制本文件到  <你的vault>/.obsidian/snippets/graph-glow.css
+ *   2. Obsidian → 设置 → 外观 → CSS 片段 → 启用 "graph-glow"
+ *   3. 主题切到深色 (Dark)
+ *   4. 打开 Graph View, 调参 (见 README.md)
+ *
+ * 效果: 纯黑背景 + 蓝紫色发光节点 + 半透明发光连线
+ * -----------------------------------------------------------
+ */
+
+/* ============ 1. 纯黑背景 ============ */
+.theme-dark .graph-view,
+.theme-dark .workspace-leaf-content[data-type="graph"] .view-content,
+.theme-dark .workspace-leaf-content[data-type="graph"] .graph-view {
+  background-color: #000000 !important;
+  background-image: none !important;
+}
+
+.theme-dark .graph-view .graph {
+  background-color: transparent !important;
+}
+
+/* ============ 2. 节点发光 (强制覆盖) ============ */
+.theme-dark .graph-view circle.color-fill,
+.theme-dark .graph-view .color-fill circle,
+.theme-dark .graph-view svg circle.color-fill,
+.theme-dark .graph-view svg .node circle.color-fill,
+.theme-dark .graph-view .node circle {
+  fill: #5dabff !important;
+  filter: drop-shadow(0 0 4px rgba(93, 171, 255, 0.9))
+          drop-shadow(0 0 8px rgba(93, 171, 255, 0.7))
+          drop-shadow(0 0 16px rgba(93, 171, 255, 0.5)) !important;
+  opacity: 0.95 !important;
+}
+
+/* 节点 hover 时更亮 + 更大 */
+.theme-dark .graph-view circle.color-fill:hover,
+.theme-dark .graph-view .node circle:hover {
+  filter: drop-shadow(0 0 6px rgba(93, 171, 255, 1))
+          drop-shadow(0 0 12px rgba(93, 171, 255, 0.9))
+          drop-shadow(0 0 24px rgba(93, 171, 255, 0.7)) !important;
+  opacity: 1 !important;
+}
+
+/* 被hover的节点 */
+.theme-dark .graph-view .node.is-highlighted circle,
+.theme-dark .graph-view circle.is-highlighted {
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 1))
+          drop-shadow(0 0 16px rgba(93, 171, 255, 1)) !important;
+}
+
+/* ============ 3. 连线发光 (光纤效果) ============ */
+.theme-dark .graph-view line.color-line,
+.theme-dark .graph-view .link line,
+.theme-dark .graph-view svg line.color-line,
+.theme-dark .graph-view .graph line {
+  stroke: #5dabff !important;
+  stroke-opacity: 0.75 !important;
+  stroke-width: 1.2px !important;
+  filter: drop-shadow(0 0 2px rgba(93, 171, 255, 1))
+          drop-shadow(0 0 5px rgba(93, 171, 255, 0.8))
+          drop-shadow(0 0 10px rgba(93, 171, 255, 0.5)) !important;
+}
+
+/* 当前 hover 节点的高亮连线 */
+.theme-dark .graph-view line.is-highlighted,
+.theme-dark .graph-view .link.is-highlighted line,
+.theme-dark .graph-view line.highlighted {
+  stroke: #ffffff !important;
+  stroke-opacity: 1 !important;
+  stroke-width: 2px !important;
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 1))
+          drop-shadow(0 0 10px rgba(93, 171, 255, 1))
+          drop-shadow(0 0 20px rgba(93, 171, 255, 0.8)) !important;
+}
+
+/* ============ 4. 文字标签 ============ */
+.theme-dark .graph-view text.color-text,
+.theme-dark .graph-view .node text,
+.theme-dark .graph-view svg text.color-text {
+  fill: #b8d2ff !important;
+  font-size: 5px !important;
+  opacity: 0.6 !important;
+  filter: drop-shadow(0 0 2px rgba(93, 171, 255, 0.6)) !important;
+  pointer-events: none;
+}
+
+.theme-dark .graph-view text.is-highlighted,
+.theme-dark .graph-view text.highlighted {
+  fill: #ffffff !important;
+  font-size: 9px !important;
+  opacity: 1 !important;
+  filter: drop-shadow(0 0 4px rgba(93, 171, 255, 1))
+          drop-shadow(0 0 8px rgba(93, 171, 255, 0.8)) !important;
+}
+
+/* ============ 5. 节点配色 (按分组) ============ */
+.theme-dark .graph-view circle.color-fill,
+.theme-dark .graph-view .node circle {
+  color: #5dabff;
+}
+
+/* group-1 蓝 - 核心 */
+.theme-dark .graph-view .group-1 circle,
+.theme-dark .graph-view circle.group-1 {
+  fill: #5dabff !important;
+}
+
+/* group-2 紫 - 项目 */
+.theme-dark .graph-view .group-2 circle,
+.theme-dark .graph-view circle.group-2 {
+  fill: #c084fc !important;
+  filter: drop-shadow(0 0 4px rgba(192, 132, 252, 0.9))
+          drop-shadow(0 0 8px rgba(192, 132, 252, 0.7)) !important;
+}
+
+/* group-3 绿 - 资源 */
+.theme-dark .graph-view .group-3 circle,
+.theme-dark .graph-view circle.group-3 {
+  fill: #34d399 !important;
+  filter: drop-shadow(0 0 4px rgba(52, 211, 153, 0.9))
+          drop-shadow(0 0 8px rgba(52, 211, 153, 0.7)) !important;
+}
+
+/* group-4 黄 - 日记 */
+.theme-dark .graph-view .group-4 circle,
+.theme-dark .graph-view circle.group-4 {
+  fill: #fbbf24 !important;
+  filter: drop-shadow(0 0 4px rgba(251, 191, 36, 0.9))
+          drop-shadow(0 0 8px rgba(251, 191, 36, 0.7)) !important;
+}
+
+/* group-5 红 - 待办 */
+.theme-dark .graph-view .group-5 circle,
+.theme-dark .graph-view circle.group-5 {
+  fill: #f87171 !important;
+  filter: drop-shadow(0 0 4px rgba(248, 113, 113, 0.9))
+          drop-shadow(0 0 8px rgba(248, 113, 113, 0.7)) !important;
+}
+
+/* ============ 6. 整体微调 ============ */
+.theme-dark .graph-view .graph {
+  filter: brightness(1.1) saturate(1.2) contrast(1.05) !important;
+}
+
+/* 控制面板半透明 */
+.theme-dark .graph-view .graph-controls,
+.theme-dark .graph-view .graph-controls .setting-item {
+  background: rgba(10, 15, 30, 0.8) !important;
+  border: 1px solid rgba(100, 150, 255, 0.25) !important;
+  backdrop-filter: blur(10px) !important;
+  color: #b8d2ff !important;
+}
+
+.theme-dark .graph-view .graph-controls .setting-item-name,
+.theme-dark .graph-view .graph-controls .setting-item-control input[type="range"] {
+  color: #b8d2ff !important;
+}
+
+/* 滑块颜色 */
+.theme-dark .graph-view .graph-controls input[type="range"]::-webkit-slider-thumb {
+  background: #5dabff !important;
+  box-shadow: 0 0 5px rgba(93, 171, 255, 0.8) !important;
+}
+
+.theme-dark .graph-view .graph-controls input[type="range"]::-webkit-slider-runnable-track {
+  background: rgba(93, 171, 255, 0.3) !important;
+}
+
+/* ============ 7. 亮色模式备用 ============ */
+.theme-light .graph-view circle.color-fill {
+  filter: drop-shadow(0 0 3px rgba(93, 171, 255, 0.7));
+}
+
+.theme-light .graph-view line.color-line {
+  stroke-opacity: 0.45 !important;
+  filter: drop-shadow(0 0 2px rgba(93, 171, 255, 0.6));
+}

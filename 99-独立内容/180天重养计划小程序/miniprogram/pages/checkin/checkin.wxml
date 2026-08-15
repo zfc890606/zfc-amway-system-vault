@@ -1,0 +1,76 @@
+<view class="page">
+  <!-- 今日信息 -->
+  <view class="today-card card">
+    <view class="today-top">
+      <view class="today-title">{{planName}}</view>
+      <view class="today-no">
+        <text class="no-num">{{dayNo}}</text>
+        <text class="no-unit">/ 180 天</text>
+      </view>
+    </view>
+    <view class="today-phase" wx:if="{{phase && !beforeStart && !afterEnd}}">
+      <text class="phase-badge" style="background:{{phase.color}}">{{phase.emoji}} {{phase.title}}</text>
+    </view>
+    <view class="today-tip" wx:if="{{tip && !beforeStart && !afterEnd}}">
+      <text class="tip-label">🌿 今日重养小提示</text>
+      <text class="tip-text">{{tip}}</text>
+    </view>
+    <view class="today-notice" wx:if="{{beforeStart}}">计划还没开始，耐心等待 {{waitDays}} 天 🌱</view>
+    <view class="today-notice" wx:elif="{{afterEnd}}">180 天已走完，你真的很棒 🌟</view>
+  </view>
+
+  <!-- 早/晚 Tab -->
+  <view class="slot-tabs" wx:if="{{!beforeStart && !afterEnd}}">
+    <view class="slot-tab {{slot === 'morning' ? 'active' : ''}}" bindtap="onSlotTab" data-slot="morning">
+      早打卡
+      <text class="slot-state {{morningDone ? 'done' : ''}}">{{morningDone ? '✓ 已完成' : ''}}</text>
+    </view>
+    <view class="slot-tab {{slot === 'evening' ? 'active' : ''}}" bindtap="onSlotTab" data-slot="evening">
+      晚打卡
+      <text class="slot-state {{eveningDone ? 'done' : ''}}">{{eveningDone ? '✓ 已完成' : ''}}</text>
+    </view>
+  </view>
+
+  <!-- 打卡内容 -->
+  <view class="checkin-card card" wx:if="{{!beforeStart && !afterEnd}}">
+    <block wx:if="{{isDone}}">
+      <!-- 已完成：只读展示 -->
+      <view class="done-box">
+        <view class="done-title">今日{{slot === 'morning' ? '早' : '晚'}}打卡已完成 🎉</view>
+        <image wx:if="{{slot === 'morning' && morning.photo}}" class="done-photo" src="{{morning.photo}}" mode="aspectFill" bindtap="onPreview" data-url="{{morning.photo}}"></image>
+        <image wx:elif="{{slot === 'evening' && evening.photo}}" class="done-photo" src="{{evening.photo}}" mode="aspectFill" bindtap="onPreview" data-url="{{evening.photo}}"></image>
+        <view wx:if="{{slot === 'morning' && morning.text}}" class="done-text">{{morning.text}}</view>
+        <view wx:elif="{{slot === 'evening' && evening.text}}" class="done-text">{{evening.text}}</view>
+        <view class="done-time">{{slot === 'morning' && morning.timeText ? '早 ' + morning.timeText : '晚 ' + evening.timeText}}</view>
+      </view>
+    </block>
+
+    <block wx:else>
+      <!-- 拍照区 -->
+      <view class="photo-box" bindtap="onChoosePhoto">
+        <image wx:if="{{photoTemp}}" class="photo-preview" src="{{photoTemp}}" mode="aspectFill"></image>
+        <view wx:else class="photo-empty">
+          <text class="photo-icon">📷</text>
+          <text class="photo-text">拍照打卡{{slot === 'morning' ? '· 早安' : '· 晚安'}}</text>
+        </view>
+        <view wx:if="{{photoTemp}}" class="photo-remove" catchtap="onRemovePhoto">✕ 重拍</view>
+      </view>
+
+      <!-- 文字 -->
+      <view class="text-box">
+        <textarea
+          class="textarea"
+          placeholder="写句话，记录今天这一刻（选填）"
+          value="{{text}}"
+          bindinput="onTextInput"
+          maxlength="200"
+        ></textarea>
+      </view>
+
+      <button class="btn-primary" bindtap="onSubmit" disabled="{{submitting}}">
+        {{submitting ? '提交中…' : slot === 'morning' ? '完成早打卡 🌅' : '完成晚打卡 🌙'}}
+      </button>
+      <view class="hint">也可以不带照片，写句话就算打卡。</view>
+    </block>
+  </view>
+</view>
