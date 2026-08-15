@@ -13,6 +13,10 @@ Thumbs.db
 
 # Obsidian plugin runtime state (may contain API keys / private keys)
 .obsidian/plugins/*/data.json
+.obsidian/plugins/*/data.json.bak
+
+# Obsidian 配置自动备份（机器相关，不入库）
+.obsidian/*.bak*
 
 # Claude 会话记录（隐私，不入库）
 .claudian/
