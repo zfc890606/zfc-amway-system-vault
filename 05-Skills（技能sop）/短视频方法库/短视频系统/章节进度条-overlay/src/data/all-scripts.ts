@@ -571,6 +571,26 @@ export const allScripts: ScriptProgressData[] = [
       { label:"三招帮爸妈正规选", sub:"蓝帽子+警示语+找专业人", startS:186, endS:251 },
       { label:"清场金句·转给爸妈", sub:"别让爸妈当那90%营养盲", startS:251, endS:318 },
     ]},
+  { id:"script-107", num:107, title:"为什么一提营养素人就跑", totalDurationS:276,
+    chapters:[
+      { label:"开场：一提营养素人就跑", sub:"身份亮牌·你是不是做安利的", startS:0, endS:36 },
+      { label:"①拆情绪：跑的是推销姿态", sub:"你反感的是那个求着你掏钱的人", startS:36, endS:76 },
+      { label:"②真相一：美国六成在吃", sub:"CDC：不是东西变了是说法变了", startS:76, endS:109 },
+      { label:"③真相二：全球一半孩子缺", sub:"柳叶刀子刊：2个孩子1个缺", startS:109, endS:138 },
+      { label:"④真相三：健康是自己的事", sub:"答题在每天不在病床·亏30万", startS:138, endS:188 },
+      { label:"收尾：三问·转给那个人", sub:"他跑的是营养素还是推销的样子", startS:188, endS:276 },
+    ]},
+  { id:"script-108", num:108, title:"医生比谁都懂身体，为什么倒下得比谁都快", totalDurationS:260,
+    chapters:[
+      { label:"开场：医生猝死新闻越来越多", sub:"麻醉医生·五千台手术", startS:0, endS:25 },
+      { label:"数据① 白皮书：每周50+小时", sub:"三级医院逼近60小时", startS:25, endS:55 },
+      { label:"数据② 复旦：3年46个过劳死", sub:"麻醉科占四分之一", startS:55, endS:80 },
+      { label:"三层① 医生是扛大的", sub:"熬夜标配·喊累矫情", startS:80, endS:115 },
+      { label:"三层② 排班机制≈酒驾", sub:"连轴转24小时=酒精0.1", startS:115, endS:155 },
+      { label:"三层③ 职业性格", sub:"病人第一·自己最后", startS:155, endS:190 },
+      { label:"医生的命也是命", sub:"该救命时医生就是神", startS:190, endS:225 },
+      { label:"健康是自己的事·结尾", sub:"评论区聊聊·关注", startS:225, endS:260 },
+    ]},
 ];
 
 export function getScriptData(id: string): ScriptProgressData | undefined {

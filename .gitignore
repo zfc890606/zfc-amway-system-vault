@@ -62,3 +62,6 @@ env/
 # 飞书文案库同步（含 App Secret，不入库）
 99-独立内容/飞书文案库同步/config.json
 99-独立内容/飞书文案库同步/.sync_state.json
+
+# 第三方工具 social-auto-upload（上游仓库·含账号配置与 cookies，不入库，需要时重新 clone）
+05-Skills（技能sop）/短视频方法库/内容发布类/social-auto-upload/
