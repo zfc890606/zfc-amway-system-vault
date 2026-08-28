@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>人生是旷野 · AI时代如何创造自己的世界</title>
+<style>
+  :root{
+    --yellow:#FFD600;
+    --yellow-deep:#F0B900;
+    --black:#111111;
+    --red:#D7002F;
+    --white:#FFFFFF;
+    --gray:#555555;
+    --serif:"Songti SC","Noto Serif SC","STSong",serif;
+    --kai:"Xingkai SC","Kaiti SC","STKaiti","KaiTi",cursive;
+    --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{height:100%;background:var(--yellow);}
+  body{font-family:var(--serif);color:var(--black);overflow:hidden;}
+
+  /* ===== Deck ===== */
+  #deck{position:fixed;inset:0;}
+  .slide{
+    position:absolute;inset:0;
+    padding:5.5vh 6vw;
+    display:flex;flex-direction:column;
+    background:var(--yellow);
+    opacity:0;pointer-events:none;
+    transform:translateY(18px) scale(.995);
+    transition:opacity .45s ease,transform .55s cubic-bezier(.2,.7,.2,1);
+    overflow:hidden;
+  }
+  .slide.active{opacity:1;pointer-events:auto;transform:none;}
+  /* crop marks (magazine) */
+  .slide::before,.slide::after{
+    content:"";position:absolute;width:26px;height:26px;pointer-events:none;z-index:3;
+  }
+  .slide::before{top:14px;left:14px;border-top:3px solid var(--black);border-left:3px solid var(--black);}
+  .slide::after{bottom:14px;right:14px;border-bottom:3px solid var(--black);border-right:3px solid var(--black);}
+  /* page watermark number */
+  .wm{
+    position:absolute;right:-1vw;bottom:-6vh;font-size:38vh;font-weight:700;line-height:1;
+    color:rgba(0,0,0,.06);font-family:var(--serif);user-select:none;pointer-events:none;z-index:0;
+  }
+  .wm.left{right:auto;left:-1vw;}
+
+  /* ===== Common elements ===== */
+  .tag{display:inline-block;border:2px solid var(--black);padding:.28em .8em;font-family:var(--kai);font-size:clamp(14px,1.5vw,20px);letter-spacing:.15em;background:var(--white);box-shadow:4px 4px 0 rgba(0,0,0,.9);}
+  .sticker{display:inline-block;background:var(--white);border:2px solid var(--black);padding:.2em .55em;font-family:var(--kai);font-size:clamp(13px,1.3vw,18px);box-shadow:3px 3px 0 rgba(0,0,0,.85);transform:rotate(-3deg);}
+  .sticker.red{background:var(--red);color:#fff;border-color:var(--black);}
+  .seal{
+    background:var(--red);color:#fff;width:3em;height:3em;border-radius:10px;
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--kai);font-size:clamp(15px,1.6vw,22px);letter-spacing:.12em;
+    writing-mode:vertical-rl;transform:rotate(3deg);box-shadow:3px 3px 0 rgba(0,0,0,.85);flex:none;
+  }
+  .kai{font-family:var(--kai);}
+  .brush{position:relative;display:inline-block;z-index:1;}
+  .brush::after{content:"";position:absolute;left:-2%;right:-2%;bottom:.06em;height:.16em;background:var(--red);opacity:.85;border-radius:50%;transform:rotate(-1.2deg);z-index:-1;}
+  .brush.black::after{background:var(--black);}
+  .hl{background:linear-gradient(transparent 58%,rgba(215,0,47,.28) 58%,rgba(215,0,47,.28) 94%,transparent 94%);}
+  .rule{height:4px;background:var(--black);width:14vw;margin:.6em 0 1em;transform:skewX(-30deg);}
+  .rule.short{width:6vw;}
+  .corner-note{position:absolute;font-family:var(--kai);color:var(--gray);font-size:clamp(12px,1.2vw,16px);z-index:2;}
+
+  /* ===== Cover ===== */
+  .cover{justify-content:space-between;}
+  .cover-top{display:flex;justify-content:space-between;align-items:center;width:100%;}
+  .cover .small-serif{font-size:clamp(13px,1.4vw,19px);letter-spacing:.35em;color:var(--black);}
+  .cover-title{
+    font-size:clamp(64px,15vw,220px);line-height:.95;font-weight:700;letter-spacing:.02em;
+    margin-top:2vh;position:relative;z-index:1;
+  }
+  .cover-title .kai-red{font-family:var(--kai);color:var(--red);}
+  .cover-sub{margin-top:1vh;}
+  .cover-sub .line{font-size:clamp(18px,2.6vw,36px);letter-spacing:.22em;font-family:var(--kai);}
+  .cover-bottom{display:flex;align-items:flex-end;justify-content:space-between;width:100%;padding-top:3vh;border-top:3px solid var(--black);}
+  .speaker{display:flex;align-items:center;gap:1.2em;}
+  .speaker .name{font-size:clamp(16px,2vw,26px);font-weight:700;letter-spacing:.08em;}
+  .speaker .tagline{font-family:var(--kai);font-size:clamp(12px,1.2vw,17px);color:var(--gray);margin-top:.3em;}
+  .cover-note{font-size:clamp(18px,2.2vw,30px);transform:rotate(-4deg);}
+  .deco-circle{position:absolute;right:-9vw;top:-12vw;width:44vw;height:44vw;border-radius:50%;border:3px solid var(--black);opacity:.35;}
+  .deco-circle::after{content:"";position:absolute;inset:1.4vw;border-radius:50%;border:2px solid var(--black);opacity:.5;}
+
+  /* ===== Section divider ===== */
+  .divider .wm{font-size:52vh;}
+  .div-num{font-size:clamp(60px,12vw,170px);font-weight:700;line-height:.9;letter-spacing:.05em;}
+  .div-title{font-size:clamp(34px,6vw,88px);font-weight:700;margin-top:.1em;letter-spacing:.1em;}
+  .div-quote{font-family:var(--kai);font-size:clamp(18px,2.4vw,34px);margin-top:1em;letter-spacing:.1em;}
+  .div-tag{position:absolute;right:6vw;top:12vh;transform:rotate(6deg);}
+
+  /* ===== Content slides ===== */
+  .content .kicker{font-family:var(--sans);font-size:clamp(12px,1.2vw,16px);letter-spacing:.5em;color:var(--gray);}
+  .content h2{font-size:clamp(34px,5.6vw,84px);font-weight:700;line-height:1.05;letter-spacing:.02em;}
+  .content h3{font-size:clamp(22px,3vw,44px);font-weight:700;}
+  .body-copy{font-size:clamp(16px,1.9vw,26px);line-height:1.7;letter-spacing:.04em;max-width:64ch;}
+  .body-copy .big{font-size:1.35em;font-weight:700;}
+  .label{font-family:var(--kai);font-size:clamp(14px,1.4vw,20px);letter-spacing:.2em;color:var(--gray);}
+
+  /* 2-col split */
+  .split{display:grid;grid-template-columns:1.1fr 1fr;gap:4vw;flex:1;align-items:center;}
+  .split.rev{grid-template-columns:1fr 1.1fr;}
+
+  /* tag cloud */
+  .cloud{display:flex;flex-wrap:wrap;gap:clamp(8px,1vw,16px);margin-top:2vh;position:relative;z-index:1;}
+  .cloud span{
+    font-size:clamp(14px,1.5vw,22px);padding:.4em .9em;border:2px solid var(--black);background:var(--white);
+    font-weight:700;letter-spacing:.08em;box-shadow:3px 3px 0 rgba(0,0,0,.85);
+  }
+  .cloud span:nth-child(2n){transform:rotate(1.6deg);}
+  .cloud span:nth-child(3n){transform:rotate(-2deg);}
+
+  /* columns / lists */
+  .cols{display:grid;grid-template-columns:repeat(3,1fr);gap:2vw;flex:1;align-items:center;}
+  .col{border-top:4px solid var(--black);padding-top:1.2em;}
+  .col .n{font-size:clamp(30px,4vw,60px);font-weight:700;color:var(--red);}
+  .col .t{font-size:clamp(17px,1.9vw,28px);font-weight:700;margin:.4em 0 .5em;}
+  .col .d{font-size:clamp(13px,1.3vw,18px);line-height:1.6;color:var(--gray);}
+
+  /* two big blocks */
+  .bigcol{display:grid;grid-template-columns:1fr 1fr;gap:3vw;flex:1;align-items:stretch;}
+  .bigcol .box{border:3px solid var(--black);padding:2.2em 1.8em;background:rgba(255,255,255,.25);display:flex;flex-direction:column;justify-content:center;box-shadow:6px 6px 0 rgba(0,0,0,.85);}
+  .bigcol .box .h{font-size:clamp(22px,2.8vw,40px);font-weight:700;margin-bottom:.5em;}
+  .bigcol .box .d{font-size:clamp(14px,1.4vw,20px);line-height:1.7;}
+
+  /* center statement slide */
+  .center{justify-content:center;align-items:flex-start;}
+  .statement{font-size:clamp(26px,3.6vw,54px);line-height:1.35;font-weight:700;letter-spacing:.03em;max-width:24ch;}
+  .statement .sub{display:block;font-size:.5em;font-weight:400;font-family:var(--kai);margin-top:1em;color:var(--gray);}
+
+  /* ===== Controls ===== */
+  .bar{position:fixed;top:0;left:0;height:5px;background:var(--red);z-index:20;width:6%;transition:width .3s;}
+  .counter{position:fixed;bottom:18px;right:22px;font-family:var(--sans);font-size:14px;letter-spacing:.2em;color:var(--black);z-index:20;background:var(--yellow);padding:.3em .7em;border:1.5px solid var(--black);}
+  .fsbtn{position:fixed;bottom:18px;left:22px;font-family:var(--sans);font-size:12px;letter-spacing:.15em;color:var(--black);z-index:20;background:var(--yellow);border:1.5px solid var(--black);padding:.3em .7em;cursor:pointer;}
+  .hint{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);font-family:var(--sans);font-size:11px;letter-spacing:.2em;color:rgba(0,0,0,.45);z-index:20;}
+
+  /* hide system-ui, pure deck */
+  .noadv{cursor:pointer;}
+
+  @media (max-aspect-ratio: 1/1){
+    .split,.split.rev{grid-template-columns:1fr;}
+    .bigcol{grid-template-columns:1fr;}
+    .cols{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<div id="deck">
+
+  <!-- ═════════ S1 封面 ═════════ -->
+  <section class="slide cover active">
+    <div class="deco-circle"></div>
+    <div class="cover-top">
+      <span class="small-serif">献给所有不想被定义的年轻人</span>
+      <span class="sticker">90后 · 00后 专场</span>
+    </div>
+    <div>
+      <h1 class="cover-title">人生是<span class="kai-red">旷野</span></h1>
+      <div class="cover-sub"><span class="line">AI 时代 · 我们如何创造自己的世界</span></div>
+    </div>
+    <div class="cover-bottom">
+      <div class="speaker">
+        <span class="seal">张医生</span>
+        <div>
+          <div class="name">AI 营养师 · 张医生</div>
+          <div class="tagline">医生 × 营养 × AI —— 一个很难被定义的人</div>
+        </div>
+      </div>
+      <div class="cover-note">不是轨道，是旷野。</div>
+    </div>
+  </section>
+
+  <!-- ═════════ S2 目录 ═════════ -->
+  <section class="slide content">
+    <div class="wm">INDEX</div>
+    <div class="kicker">AGENDA</div>
+    <h2 style="margin-bottom:4vh;">今天讲三件事</h2>
+    <div class="cols">
+      <div class="col">
+        <div class="n">01</div>
+        <div class="t">我的故事</div>
+        <div class="d">人生不设限 —— 一个医生、导演、音乐人、营养师、AI 玩家的多重身份。</div>
+      </div>
+      <div class="col">
+        <div class="n">02</div>
+        <div class="t">世界的本质</div>
+        <div class="d">《人类简史》—— 规则、虚构与共同相信，世界由故事构成。</div>
+      </div>
+      <div class="col">
+        <div class="n">03</div>
+        <div class="t">AI 时代</div>
+        <div class="d">知识门槛被砍平，读懂规则的人，开始创造自己的世界。</div>
+      </div>
+    </div>
+    <div class="corner-note" style="right:8vw;bottom:12vh;transform:rotate(-3deg);">翻开这一页，故事开始了 →</div>
+  </section>
+
+  <!-- ═════════ S3 篇章页 壹 ═════════ -->
+  <section class="slide divider">
+    <div class="wm left">壹</div>
+    <div class="div-tag"><span class="sticker red">个人经历</span></div>
+    <div>
+      <div class="div-num">壹</div>
+      <div class="div-title">我的故事</div>
+      <div class="div-quote">人生不设限 —— 先讲讲我是谁。</div>
+    </div>
+  </section>
+
+  <!-- ═════════ S4 很难定义我 ═════════ -->
+  <section class="slide content">
+    <div class="wm">WHO</div>
+    <div class="kicker">MY IDENTITY</div>
+    <h2>我，很难被<span class="brush">定义</span></h2>
+    <div class="cloud">
+      <span>晚会导演</span><span>主持人</span><span>音乐</span><span>旅行</span><span>阅读</span><span>医生</span><span>营养师</span><span>讲师</span><span>AI</span>
+    </div>
+    <div class="body-copy" style="margin-top:4vh;">
+      <span class="big">每一个身份都是真实的，也都只是我的一部分。</span><br>
+      过去的我，做过太多「不像同一个人」的事 —— 站在舞台上，也进过手术室。
+    </div>
+    <div class="corner-note" style="right:9vw;bottom:14vh;transform:rotate(4deg);">你，也是多重宇宙。</div>
+    <span class="seal" style="position:absolute;right:7vw;bottom:16vh;">不设限</span>
+  </section>
+
+  <!-- ═════════ S5 价值观1 人生不设限 ═════════ -->
+  <section class="slide center">
+    <div class="wm">NO LIMITS</div>
+    <div class="tag" style="margin-bottom:3vh;">我的第一个价值观</div>
+    <h2 class="statement">
+      人生不设限。
+      <span class="sub">不要用传统制定的框架，去限定自己。</span>
+    </h2>
+    <div class="rule" style="margin-top:4vh;"></div>
+    <p class="body-copy" style="margin-top:1.5vh;">轨道是别人画好的；旷野，是自己走出来的。</p>
+  </section>
+
+  <!-- ═════════ S6 旷野 vs 轨道 ═════════ -->
+  <section class="slide content">
+    <div class="kicker">METAPHOR</div>
+    <h2>人生是旷野，不是<span class="brush">轨道</span></h2>
+    <div class="bigcol" style="margin-top:3vh;">
+      <div class="box">
+        <div class="h">🚂 轨道</div>
+        <div class="d">安全 · 确定 · 被安排<br>父母画的线，社会铺的路<br>平稳，但一眼望到头。</div>
+      </div>
+      <div class="box" style="transform:rotate(1.2deg);">
+        <div class="h">🏔 旷野</div>
+        <div class="d">自由 · 未知 · 自己开路<br>每一脚都可能踩空<br>但每一步都通往真正的自己。</div>
+      </div>
+    </div>
+    <div class="corner-note" style="right:8vw;bottom:13vh;transform:rotate(-3deg);">我选旷野。</div>
+  </section>
+
+  <!-- ═════════ S7 写给零零后 ═════════ -->
+  <section class="slide center">
+    <div class="wm">FOR U</div>
+    <div class="tag" style="margin-bottom:3vh;">写给你们</div>
+    <h2 class="statement">
+      你是来<span class="brush">创造规则</span>的，<br>不是来遵守旧规则的。
+      <span class="sub">00 后，是定义新世界的一代。</span>
+    </h2>
+    <div class="corner-note" style="right:10vw;bottom:16vh;transform:rotate(5deg);">去试，去错，去体验。</div>
+  </section>
+
+  <!-- ═════════ S8 篇章页 贰 ═════════ -->
+  <section class="slide divider">
+    <div class="wm left">贰</div>
+    <div class="div-tag"><span class="sticker red">一本书</span></div>
+    <div>
+      <div class="div-num">贰</div>
+      <div class="div-title">世界的本质</div>
+      <div class="div-quote">《人类简史》 · 尤瓦尔·赫拉利 —— 世界的本质，是规则。</div>
+    </div>
+  </section>
+
+  <!-- ═════════ S9 一切都被规则规定 ═════════ -->
+  <section class="slide content">
+    <div class="kicker">RULES</div>
+    <h2>你现在过的一切生活<br>都是被<span class="brush">规则</span>规定出来的</h2>
+    <div class="cols" style="margin-top:3vh;">
+      <div class="col"><div class="t">父母的期望</div><div class="d">「为你好」三条路：稳定工作、早点结婚、别瞎折腾。</div></div>
+      <div class="col"><div class="t">学校的标准</div><div class="d">分数、排名、好专业 —— 一套统一的通关游戏。</div></div>
+      <div class="col"><div class="t">社会的剧本</div><div class="d">买房、还贷、升职、退休 —— 一条被写好的时间线。</div></div>
+    </div>
+    <div class="corner-note" style="right:9vw;bottom:13vh;transform:rotate(-3deg);">但规则，其实是「共同想象」。</div>
+  </section>
+
+  <!-- ═════════ S10 钱是虚构的故事 ═════════ -->
+  <section class="slide content split rev">
+    <div class="wm">MONEY</div>
+    <div>
+      <div class="kicker">A TRUE STORY</div>
+      <h2>钱，是虚构的<span class="brush">故事</span></h2>
+      <div class="body-copy" style="margin-top:2vh;">
+        <span class="big">金钱、公司、国家、法律……</span><br>
+        这些都是人类共同相信的虚构。<br>
+        我们相信它，它就存在。
+      </div>
+      <div class="sticker" style="margin-top:3vh;transform:rotate(2deg);">虚构 ≠ 谎言</div>
+    </div>
+    <div style="position:relative;">
+      <div class="tag" style="font-size:clamp(22px,3vw,44px);padding:.4em .7em;">$ ¥ €</div>
+      <div class="body-copy" style="margin-top:2vh;font-size:clamp(15px,1.5vw,21px);color:var(--gray);">钞票本身只是纸，价值来自 80 亿人的共同相信 —— 这是人类协作的根基，也是每个人重新书写故事的权力。</div>
+    </div>
+  </section>
+
+  <!-- ═════════ S11 人生的意义 ═════════ -->
+  <section class="slide center">
+    <div class="wm">MEANING</div>
+    <div class="tag" style="margin-bottom:3vh;">既然世界是虚构的</div>
+    <h2 class="statement">
+      找到你真正想做的事，<br>然后<span class="brush">去探索、去体验</span>。
+      <span class="sub">体验，才是人生的意义。</span>
+    </h2>
+    <div class="corner-note" style="right:10vw;bottom:16vh;transform:rotate(4deg);">世界由你重写。</div>
+  </section>
+
+  <!-- ═════════ S12 篇章页 叁 ═════════ -->
+  <section class="slide divider">
+    <div class="wm left">叁</div>
+    <div class="div-tag"><span class="sticker red">AI 时代</span></div>
+    <div>
+      <div class="div-num">叁</div>
+      <div class="div-title">AI 时代</div>
+      <div class="div-quote">未来已来 —— 这不是预测，是现在。</div>
+    </div>
+  </section>
+
+  <!-- ═════════ S13 AI 创造一切 ═════════ -->
+  <section class="slide content">
+    <div class="kicker">GENERATIVE</div>
+    <h2>AI 可以创造<br>一切你能<span class="brush">想象</span>的东西</h2>
+    <div class="cols" style="margin-top:3vh;">
+      <div class="col">
+        <div class="n">90%</div>
+        <div class="t">的人无需重复劳动</div>
+        <div class="d">重复的、可复制的劳动，正在被 AI 接管。</div>
+      </div>
+      <div class="col">
+        <div class="n">0</div>
+        <div class="t">知识门槛被砍平</div>
+        <div class="d">过去要靠十年积累的信息差，现在一句话就能调用。</div>
+      </div>
+      <div class="col">
+        <div class="n">∞</div>
+        <div class="t">创造力的可能</div>
+        <div class="d">写作、设计、代码、视频 —— AI 放大每一个人的想法。</div>
+      </div>
+    </div>
+    <div class="corner-note" style="right:9vw;bottom:13vh;transform:rotate(3deg);">拐点已至。</div>
+  </section>
+
+  <!-- ═════════ S14 规则向所有人打开 ═════════ -->
+  <section class="slide center">
+    <div class="wm">OPEN</div>
+    <div class="kicker" style="margin-bottom:2vh;">THE NEW GAME</div>
+    <h2 class="statement">
+      过去：信息差 = 特权。<br>现在：AI 让信息差<span class="brush">归零</span>。
+      <span class="sub">读懂规则的那一刻，就是你创造世界的那一刻。</span>
+    </h2>
+  </section>
+
+  <!-- ═════════ S15 AI + 大健康 ═════════ -->
+  <section class="slide content">
+    <div class="kicker">MISSION</div>
+    <h2>未来 AI 时代，<br>做一件<span class="brush">有价值</span>的事</h2>
+    <div class="body-copy" style="margin-top:2vh;">
+      用 AI，把有价值的健康信息，传递给更多人。<br><br>
+      因为 <span class="big">90% 的人还不知道</span>：
+    </div>
+    <div class="cloud" style="margin-top:2vh;">
+      <span>AI 的本质</span><span>信息的本质</span><span>健康的本质</span><span>财富的本质</span>
+    </div>
+    <div class="corner-note" style="right:9vw;bottom:13vh;transform:rotate(-3deg);">知道规则的人，先到未来。</div>
+  </section>
+
+  <!-- ═════════ S16 两大风口 ═════════ -->
+  <section class="slide content split">
+    <div class="wm">WINDS</div>
+    <div>
+      <div class="kicker">TWO WINDS</div>
+      <h2>两大<span class="brush">风口</span></h2>
+      <div class="body-copy" style="margin-top:1.5vh;color:var(--gray);">风口不是等来的，是读懂规则后，站上去的。</div>
+    </div>
+    <div>
+      <div class="bigcol" style="grid-template-columns:1fr;gap:2vh;">
+        <div class="box">
+          <div class="h">风口一 · AI</div>
+          <div class="d">先学会用 AI —— 让 AI 成为你的能力放大器。</div>
+        </div>
+        <div class="box" style="transform:rotate(1deg);">
+          <div class="h">风口二 · 大健康</div>
+          <div class="d">把健康信息通过 AI 讲清楚 —— 帮更多人活得明白。</div>
+        </div>
+      </div>
+      <div class="sticker" style="margin-top:2.5vh;">落地：短视频 × 自媒体</div>
+    </div>
+  </section>
+
+  <!-- ═════════ S17 我在做的事 ═════════ -->
+  <section class="slide content">
+    <div class="kicker">WHAT I BUILD</div>
+    <h2>我正在做的事</h2>
+    <div class="cols" style="margin-top:3vh;">
+      <div class="col">
+        <div class="n">AI</div>
+        <div class="t">AI 工具应用</div>
+        <div class="d">写作、做图、做视频、搭知识库 —— 一人即团队。</div>
+      </div>
+      <div class="col">
+        <div class="n">DV</div>
+        <div class="t">大健康自媒体创作</div>
+        <div class="d">用短视频把健康的本质，讲给普通人听。</div>
+      </div>
+      <div class="col">
+        <div class="n">KB</div>
+        <div class="t">本地知识库系统</div>
+        <div class="d">把十年的医生经验 + 营养认知，变成一套可复用的系统。</div>
+      </div>
+    </div>
+    <div class="corner-note" style="right:9vw;bottom:12vh;">（现场演示 → AI 工具 · 自媒体后台 · 知识库）</div>
+    <span class="seal" style="position:absolute;right:7vw;bottom:15vh;">演示</span>
+  </section>
+
+  <!-- ═════════ S18 结尾 ═════════ -->
+  <section class="slide center">
+    <div class="wm">YOU</div>
+    <div class="tag" style="margin-bottom:3vh;">最后，你也可以</div>
+    <h2 class="statement">
+      借 AI 这条通道，<br>把你认为<span class="brush">有价值</span>的东西，<br>让更多人受益。
+      <span class="sub">AI 营养师 · 张医生 —— 谢谢，一起上路。</span>
+    </h2>
+    <div class="corner-note" style="right:10vw;bottom:16vh;transform:rotate(4deg);">人生是旷野，不是轨道。</div>
+  </section>
+
+</div>
+
+<div class="bar" id="bar"></div>
+<div class="counter" id="counter">01 — 18</div>
+<button class="fsbtn noadv" id="fsbtn" title="全屏 (F)">⛶ 全屏</button>
+<div class="hint">← → 翻页 · F 全屏 · Esc 退出</div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  let i=0;
+  const bar=document.getElementById('bar');
+  const counter=document.getElementById('counter');
+  function update(){
+    slides.forEach((s,k)=>s.classList.toggle('active',k===i));
+    counter.textContent=String(i+1).padStart(2,'0')+' — '+String(slides.length).padStart(2,'0');
+    bar.style.width=((i+1)/slides.length*100)+'%';
+  }
+  function go(n){ i=(n+slides.length)%slides.length; update(); }
+  document.addEventListener('keydown',e=>{
+    if(['ArrowRight','ArrowDown','PageDown',' '].includes(e.key)){e.preventDefault();go(i+1);}
+    else if(['ArrowLeft','ArrowUp','PageUp'].includes(e.key)){e.preventDefault();go(i-1);}
+    else if(e.key==='Home'){go(0);}
+    else if(e.key==='End'){go(slides.length-1);}
+    else if(e.key==='f'||e.key==='F'){toggleFS();}
+  });
+  document.addEventListener('click',e=>{
+    if(e.target.closest('.noadv'))return;
+    if(e.clientX>window.innerWidth*.75){go(i+1);}
+    else if(e.clientX<window.innerWidth*.25){go(i-1);}
+    else{go(i+1);}
+  });
+  let tx=0,ty=0;
+  document.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;ty=e.touches[0].clientY;},{passive:true});
+  document.addEventListener('touchend',e=>{
+    const dx=e.changedTouches[0].clientX-tx;
+    const dy=e.changedTouches[0].clientY-ty;
+    if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)){dx<0?go(i+1):go(i-1);}
+  },{passive:true});
+  function toggleFS(){
+    if(!document.fullscreenElement){document.documentElement.requestFullscreen&&document.documentElement.requestFullscreen();}
+    else{document.exitFullscreen&&document.exitFullscreen();}
+  }
+  document.getElementById('fsbtn').addEventListener('click',toggleFS);
+  update();
+</script>
+</body>
+</html>

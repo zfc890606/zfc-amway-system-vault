@@ -1,0 +1,80 @@
+/* theme: yellow-black-editorial — 黄底黑字 · 大号现代衬线 · 波普手绘贴纸
+   inspired by NotebookLM prompt "Yellow × Black Editorial"
+   Yellow background, black text, large dynamic modern serif font placement,
+   pop and chic touches like handwriting or stickers scattered throughout,
+   bold layout like a fashion magazine */
+
+:root{
+  --bg:#FFD500;
+  --bg-soft:#F5C400;
+  --surface:#FFF3A6;
+  --surface-2:#F0BF00;
+  --border:rgba(0,0,0,.25);
+  --border-strong:#0a0a0a;
+  --text-1:#0a0a0a;
+  --text-2:#1f1f00;
+  --text-3:#4a4a00;
+  --accent:#0a0a0a;
+  --accent-2:#FF3333;
+  --accent-3:#0047FF;
+  --good:#0a0a0a;
+  --warn:#FF3333;
+  --bad:#FF3333;
+  --grad:linear-gradient(135deg,#0a0a0a,#FF3333);
+  --grad-soft:linear-gradient(135deg,#FFF3A6,#FFD500);
+  --radius:0px;--radius-sm:0px;--radius-lg:0px;
+  --shadow:6px 6px 0 rgba(0,0,0,.92);
+  --shadow-lg:12px 12px 0 rgba(0,0,0,.92);
+  --font-sans:'Noto Sans SC','Inter',-apple-system,Helvetica,Arial,sans-serif;
+  --font-serif:'Playfair Display','Noto Serif SC',Georgia,serif;
+  --font-display:'Playfair Display','Noto Serif SC',Georgia,serif;
+  --font-mono:'JetBrains Mono',monospace;
+  --letter-tight:-.03em;
+}
+
+/* ---------- typography: oversized serif, fashion-magazine ---------- */
+h1.title,.h1{font-family:var(--font-display);font-weight:900;letter-spacing:-.02em;text-transform:uppercase}
+h2.title,.h2{font-family:var(--font-display);font-weight:800;letter-spacing:-.01em}
+h3,.h3{font-family:var(--font-display);font-weight:800}
+.kicker{color:#0a0a0a;font-weight:900;letter-spacing:.16em}
+.lede{color:#1f1f00;font-weight:400}
+.dim{color:#1f1f00}
+.dim2{color:#4a4a00}
+.gradient-text{background:linear-gradient(135deg,#0a0a0a,#FF3333)}
+
+/* ---------- pop sticker / handwriting touches ---------- */
+.sticker{display:inline-block;background:#fff;border:2.5px solid #0a0a0a;
+  box-shadow:5px 5px 0 rgba(0,0,0,.9);padding:6px 18px;font-weight:900;
+  transform:rotate(-2deg);color:#0a0a0a;white-space:nowrap}
+.sticker.red{background:#FF3333;color:#fff}
+.sticker.blue{background:#0047FF;color:#fff}
+.sticker.yellow{background:#FFD500;color:#0a0a0a}
+.sticker.white{background:#fff;color:#0a0a0a}
+.sticker.r2{transform:rotate(1.6deg)}
+.sticker.r3{transform:rotate(-1deg)}
+.stamp{display:inline-block;border:3px solid #0a0a0a;border-radius:10px;
+  padding:4px 16px;font-weight:900;letter-spacing:.12em;transform:rotate(3deg);
+  color:#0a0a0a;background:rgba(255,255,255,.25);white-space:nowrap}
+.halftone{background-image:radial-gradient(rgba(0,0,0,.16) 1.5px,transparent 1.5px);background-size:14px 14px}
+.underline-hand{display:inline-block;border-bottom:5px solid #0a0a0a;padding-bottom:2px}
+.big-num{font-family:var(--font-display);font-weight:900;line-height:.9;letter-spacing:-.03em;color:#0a0a0a}
+.circle-doodle{display:inline-flex;align-items:center;justify-content:center;border:3px solid #0a0a0a;
+  border-radius:50%;width:34px;height:34px;font-weight:900}
+.arrow-hand{font-weight:900;font-size:1.4em}
+
+/* ---------- cards: hard border + offset shadow (pop) ---------- */
+.card{background:var(--surface);border:2.5px solid var(--border-strong);border-radius:0;
+  box-shadow:var(--shadow)}
+.card-outline{background:transparent;border:2.5px solid var(--border-strong);box-shadow:none}
+.card-soft{background:var(--surface-2);border:2.5px solid var(--border-strong)}
+.card-accent{background:var(--surface);border-top:6px solid #0a0a0a;box-shadow:var(--shadow)}
+.pill{border:2px solid #0a0a0a;border-radius:0;background:#fff;color:#0a0a0a;font-weight:700}
+.pill-accent{background:#FF3333;color:#fff;border:2px solid #0a0a0a}
+
+/* ---------- chrome ---------- */
+.divider-accent{background:#0a0a0a;height:5px;width:90px}
+.deck-header,.deck-footer{color:#1f1f00;font-weight:700}
+.progress-bar > span{background:#0a0a0a}
+
+/* ---------- big number callouts ---------- */
+.stat-tag{font-family:var(--font-display);font-weight:900}

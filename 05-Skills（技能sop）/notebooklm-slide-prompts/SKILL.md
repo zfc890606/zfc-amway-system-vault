@@ -1,12 +1,12 @@
 ---
-name: notebooklm-slide-prompts
+name: NotebookLM/Kael.im
 description: NotebookLM/Kael.im 幻灯片设计提示词库 — 精选自 X/Twitter、小红书、Note 等平台的 20+ 种幻灯片视觉风格提示词，覆盖 editorial、pop、艺术、专业、运动等风格谱系。
 version: 1.0.0
 metadata:
   source: https://github.com/serenakeyitan/awesome-notebookLM-prompts
   license: CC BY 4.0
 ---
-
+PPT的工作的
 # NotebookLM 幻灯片设计提示词库
 
 > 精选自全球创作者社区的 NotebookLM & Kael.im 幻灯片设计提示词，涵盖 editorial、pop、艺术、专业、运动等风格谱系。
@@ -58,9 +58,9 @@ metadata:
 
 **风格**：洗练商业媒体 · 瑞士风格/包豪斯灵感 · 非对称布局 · 超大标题占比30-50%
 
-![Preview](https://hackmd.io/_uploads/SkkpwiPM-g.png)
-![Preview](https://hackmd.io/_uploads/rJZ0pyKGbg.png)
-![Preview](https://hackmd.io/_uploads/Hya0p1FzZx.png)
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/SkkpwiPM-g.png]]
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/rJZ0pyKGbg.png]]
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/Hya0p1FzZx.png]]
 
 ````
 You are a top art director leading Japan's "new economy business media." But the language should be what users said in the prompt. so not nessecery in (the language what users requested in the prompt).
@@ -107,8 +107,7 @@ Based on the following "design definition," generate a visually focused, high-se
 
 **风格**：锐利极简·建筑感·左上角导航·网格系统
 
-![Preview](https://hackmd.io/_uploads/S1AgdjvzZx.png)
-![Preview](https://hackmd.io/_uploads/r16fOsDMZe.png)
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/r16fOsDMZe.png]]
 
 ````
 # presentation_design_spec_minimal_jp.yaml
@@ -158,8 +157,8 @@ Layout Variations:
 
 **风格**：黄底黑字·大号现代衬线字体·时尚摄影·波普手绘贴纸
 
-![Preview](https://hackmd.io/_uploads/r1CQYiwz-l.jpg)
-![Preview](https://hackmd.io/_uploads/SymEYsDM-g.jpg)
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/r1CQYiwz-l.jpg]]
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/SymEYsDM-g.jpg]]
 
 ```
 Yellow background, black text, large dynamic modern serif font placement, stylish, photos are unique fashion photography, with pop and chic touches like handwriting or stickers scattered throughout, bold layout like a fashion magazine
@@ -172,8 +171,7 @@ Yellow background, black text, large dynamic modern serif font placement, stylis
 
 **风格**：白底黑字+血橙色点缀·创意社风格
 
-![Preview](https://hackmd.io/_uploads/rJtz5yFMWx.png)
-![Preview](https://hackmd.io/_uploads/ryZ0YJtfWe.png)
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/ryZ0YJtfWe.png]]
 
 ```
 Background is white, text is black, accent color is blood orange, stylish design that a creative agency might create, incorporating dynamic and simple photos and English typography. But the language should be what users said in the prompt.
@@ -186,8 +184,8 @@ Background is white, text is black, accent color is blood orange, stylish design
 
 **风格**：极简文字·白底黑字红点缀
 
-![Preview](https://hackmd.io/_uploads/HJASpkYGbl.png)
-![Preview](https://hackmd.io/_uploads/Bks861tGWx.png)
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/HJASpkYGbl.png]]
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/Bks861tGWx.png]]
 
 ```
 White background, black text, red accent color, sans-serif font, high-quality photo like a fashion portrait, dynamic typography, high-sensibility design
@@ -200,8 +198,8 @@ White background, black text, red accent color, sans-serif font, high-quality ph
 
 **风格**：漫画风·用故事+漫画提高理解度
 
-![Preview](https://hackmd.io/_uploads/SygJvqkKf-l.png)
-![Preview](https://hackmd.io/_uploads/r1Ew9yYMZl.png)
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/SygJvqkKf-l.png]]
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/r1Ew9yYMZl.png]]
 
 ```
 Understanding becomes deeper with "fun." Sometimes, it's recommended to turn information into a comic and input it along with a story. You can relate it to your own situation, and it's easier to remember.
@@ -214,7 +212,7 @@ Understanding becomes deeper with "fun." Sometimes, it's recommended to turn inf
 
 **风格**：成熟可爱杂志风·剪影照片·手绘气泡
 
-![Preview](https://hackmd.io/_uploads/rkQpqyKfbg.png)
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/rkQpqyKfbg.png]]
 
 ```
 # Instructions
@@ -249,8 +247,7 @@ Please compile [Source Information] in a [mature-cute, sophisticated magazine-st
 
 **风格**：粉色背景·白黑文字·厚线条插画·街头波普
 
-![Preview](https://hackmd.io/_uploads/SJJDi1KzZe.png)
-![Preview](https://hackmd.io/_uploads/S1PsJKM-l.png)
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/SJJDi1KzZe.png]]
 
 ```
 Background is pink, text is white and black, illustrative illustrations are pop and deformed illustrations drawn with thick lines, overall street style but pop, flat colors, photos are trimmed into soft and squishy shapes to create a sense of looseness,
@@ -263,8 +260,7 @@ Background is pink, text is white and black, illustrative illustrations are pop 
 
 **风格**：明朝体+手写混搭·黄底黑字·时尚杂志感
 
-![Preview](https://hackmd.io/_uploads/RkcRhytMWg.png)
-![Preview](https://hackmd.io/_uploads/r1D1a1Yfbe.png)
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/HkcRhytMWg.png]]
 
 ```
 Yellow background, black text, large dynamic modern serif font placement, stylish, photos are unique fashion photography, with pop and chic touches like handwriting or stickers scattered throughout, bold layout like a fashion magazine
@@ -277,8 +273,8 @@ Yellow background, black text, large dynamic modern serif font placement, stylis
 
 **风格**：维生素波普·数字新潮·有机形状·SNS友好视觉
 
-![Preview](https://hackmd.io/_uploads/HyXkPgFM-g.png)
-![Preview](https://hackmd.io/_uploads/BJOywxYfbx.png)
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/HyXkPgFM-g.png]]
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/BJOywxYfbx.png]]
 
 ````
 # presentation_design_spec_pop_jp.yaml
@@ -329,9 +325,9 @@ Layout Variations:
 
 **风格**：皇家蓝与红·湿水彩质感
 
-![Preview](https://hackmd.io/_uploads/H1gBCkKGbx.png)
-![Preview](https://hackmd.io/_uploads/rJDuCkKzWl.png)
-![Preview](https://hackmd.io/_uploads/H1yiCyFzZe.png)
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/H1gBCkKGbx.png]]
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/rJDuCkKzWl.png]]
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/H1yiCyFzZe.png]]
 
 ```
 Shades of royal Blue and Red wet watercolor. Focus on different artistic styles to be used with kael/notebooklm Slides decks.
@@ -344,8 +340,8 @@ Shades of royal Blue and Red wet watercolor. Focus on different artistic styles 
 
 **风格**：高保真工作室·Apple产品3D模型·极简UI展示
 
-![Preview](https://hackmd.io/_uploads/BkZwrxtzWl.png)
-![Preview](https://hackmd.io/_uploads/SyYvrxYzWe.png)
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/BkZwrxtzWl.png]]
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/SyYvrxYzWe.png]]
 
 ````
 # presentation_design_spec_premium_mockup_jp.yaml
@@ -394,8 +390,8 @@ Layout Variations:
 
 **风格**：运动激情·深色背景·霓虹绿橙点缀·斜切形状
 
-![Preview](https://hackmd.io/_uploads/BJChHgFGZx.png)
-![Preview](https://hackmd.io/_uploads/SkQ6BgFzZg.png)
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/BJChHgFGZx.png]]
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/SkQ6BgFzZg.png]]
 
 ````
 # presentation_design_spec_sports_active_jp.yaml
@@ -436,8 +432,8 @@ Layout Variations:
 
 **风格**：古典大理石雕塑×现代霓虹波普·高饱和度
 
-![Preview](https://hackmd.io/_uploads/ByC4UltzWg.png)
-![Preview](https://hackmd.io/_uploads/B1zB8lFG-e.png)
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/ByC4UltzWg.png]]
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/B1zB8lFG-e.png]]
 
 ````
 # presentation_design_spec_sculpture_pop_flexible_jp.yaml
@@ -481,8 +477,8 @@ Layout Variations:
 
 **风格**：构成主义·科技艺术·暖灰底+霓虹黄·建筑蓝图感
 
-![Preview](https://hackmd.io/_uploads/BJOY8ltzWx.png)
-![Preview](https://hackmd.io/_uploads/r11cIlYfbx.png)
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/BJOY8ltzWx.png]]
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/r11cIlYfbx.png]]
 
 ````
 # presentation_design_spec_neon_collage_jp.yaml
@@ -517,9 +513,9 @@ Slide Composition Patterns:
 
 **风格**：反重力器物·极简空气感·蓝紫渐变·Apple/DeepMind 风格
 
-![Preview](https://hackmd.io/_uploads/B1EVPrCfWl.png)
-![Preview](https://hackmd.io/_uploads/rk4DDBAMbx.png)
-![Preview](https://hackmd.io/_uploads/ryN4Dr0zbl.png)
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/B1EVPrCfWl.png]]
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/rk4EDBAMbx.png]]
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/ryN4Dr0zbl.png]]
 
 ````
 Style Name: Anti-Gravity / Living Artifact Presentation
@@ -568,9 +564,9 @@ Common: Text on left, visual on right; three-column feature cards; one idea per 
 
 **风格**：扁平变形人设·厚轮廓·柔和色调·纯色背景
 
-![Preview](https://hackmd.io/_uploads/r1HEH0um-x.jpg)
-![Preview](https://hackmd.io/_uploads/SkqEB0dQZl.jpg)
-![Preview](https://hackmd.io/_uploads/Ska4SCdXZl.jpg)
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/r1HEH0um-x.jpg]]
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/SkqEB0dQZl.jpg]]
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/Ska4SCdXZl.jpg]]
 
 ```
 # Style:
@@ -596,8 +592,8 @@ Common: Text on left, visual on right; three-column feature cards; one idea per 
 
 ## Neo-Retro Dev Deck
 
-风格
-![Preview](https://hackmd.io/_uploads/HykAwBRf-l.png)
+风格## 新复古开发者手册 / 像素信息图编辑部
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/HykAwBRf-l.png]]
 
 ````
 Style Name: Neo-Retro Dev Deck / Pixel-Infographic Editorial

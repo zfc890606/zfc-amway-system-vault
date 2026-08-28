@@ -4,7 +4,7 @@
 
 ### 🌳 use artifacts in [first-tree](https://first-tree.ai/?utm_source=github&utm_medium=readme&utm_campaign=awesome-notebookLM-prompts-site) for **free** — the most efficient way for **human & agent collaboration** :D
 
-![repo_banner](https://hackmd.io/_uploads/HJdglgwrZe.png)
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/HJdglgwrZe.png]]
 ![Awesome](https://awesome.re/badge.svg)
 ![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)
 
@@ -52,9 +52,9 @@ I also built a [citation checker skill](https://github.com/serenakeyitan/citatio
 
 ## **modern newspaper:**
 
-![image](https://hackmd.io/_uploads/SkkpwiPM-g.png)
-![image](https://hackmd.io/_uploads/rJZ0pyKGbg.png)
-![image](https://hackmd.io/_uploads/Hya0p1FzZx.png)
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/SkkpwiPM-g.png]]
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/rJZ0pyKGbg.png]]
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/Hya0p1FzZx.png]]
 
 
 
@@ -101,8 +101,7 @@ Based on the following "design definition," generate a visually focused, high-se
 
 ## **sharp-edged minimalism:**
 
-![image](https://hackmd.io/_uploads/S1AgdjvzZx.png)
-![image](https://hackmd.io/_uploads/r16fOsDMZe.png)
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/r16fOsDMZe.png]]
 
 
 ```
@@ -185,8 +184,8 @@ Layout Variations (Catalog):
 
 ## **yellow x black:**
 
-![unnamed](https://hackmd.io/_uploads/r1CQYiwz-l.jpg)
-![unnamed-2](https://hackmd.io/_uploads/SymEYsDM-g.jpg)
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/r1CQYiwz-l.jpg]]
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/SymEYsDM-g.jpg]]
 
 ```
 Yellow background, black text, large dynamic modern serif font placement, stylish, photos are unique fashion photography, with pop and chic touches like handwriting or stickers scattered throughout, bold layout like a fashion magazine
@@ -195,9 +194,8 @@ source: [Kawai](https://x.com/kawai_design)
 
 ## Black x Orange Style
 
-![image](https://hackmd.io/_uploads/rJtz5yFMWx.png)
 
-![image](https://hackmd.io/_uploads/ryZ0YJtfWe.png)
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/ryZ0YJtfWe.png]]
 
 ```
 Background is white, text is black, accent color is blood orange, stylish design that a creative agency might create, incorporating dynamic and simple photos and English typography. But the language should be what users said in the prompt. 
@@ -205,8 +203,8 @@ Background is white, text is black, accent color is blood orange, stylish design
 source: [Kawai](https://x.com/kawai_design)
 ## Manga style
 
-![image](https://hackmd.io/_uploads/SygJvqkKf-l.png)
-![image](https://hackmd.io/_uploads/r1Ew9yYMZl.png)
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/SygJvqkKf-l.png]]
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/r1Ew9yYMZl.png]]
 
 
 
@@ -217,7 +215,7 @@ source: [Kawai](https://x.com/kawai_design)
 
 ## Magazine style
 
-![image](https://hackmd.io/_uploads/rkQpqyKfbg.png)
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/rkQpqyKfbg.png]]
 
 ```
 # Instructions
@@ -247,7 +245,7 @@ Please compile [Source Information] in a [mature-cute, sophisticated magazine-st
 source: https://x.com/tetumemo/status/1996930284500201685?s=20
 
 ## Neo-Retro Dev Deck / Pixel-Infographic Editorial
-![unnamed-3](https://hackmd.io/_uploads/HykAwBRf-l.png)
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/HykAwBRf-l.png]]
 
 ```
 Overall Style Name
@@ -368,8 +366,8 @@ Slides should look like they belong to one cohesive deck, not individual posters
 
 ## pink street-style
 
-![image](https://hackmd.io/_uploads/SJJDi1KzZe.png)
-![image](https://hackmd.io/_uploads/S1NPsJKM-l.png)
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/SJJDi1KzZe.png]]
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/S1NPsJKM-l.png]]
 
 ```
 Background is pink, text is white and black, illustrative illustrations are pop and deformed illustrations drawn with thick lines, overall street style but pop, flat colors, photos are trimmed into soft and squishy shapes to create a sense of looseness,
@@ -378,8 +376,7 @@ source: [Kawai](https://x.com/kawai_design)
 
 ## Mincho font + Handwritten MIX
 
-![Screenshot 2025-12-11 at 17.15.57](https://hackmd.io/_uploads/HkcRhytMWg.png)
-![Screenshot 2025-12-11 at 17.16.12](https://hackmd.io/_uploads/r1D1a1Yfbe.png)
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/HkcRhytMWg.png]]
 ```
 Yellow background, black text, large dynamic modern serif font placement, stylish, photos are unique fashion photography, with pop and chic touches like handwriting or stickers scattered throughout, bold layout like a fashion magazine
 ```
@@ -388,8 +385,8 @@ source: [Kawai](https://x.com/kawai_design)
 
 ## For seminar use, minimal text
 
-![Screenshot 2025-12-11 at 17.17.55](https://hackmd.io/_uploads/HJASpkYGbl.png)
-![Screenshot 2025-12-11 at 17.18.07](https://hackmd.io/_uploads/Bks861tGWx.png)
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/HJASpkYGbl.png]]
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/Bks861tGWx.png]]
 ```
 White background, black text, red accent color, sans-serif font, high-quality photo like a fashion portrait, dynamic typography, high-sensibility design
 ```
@@ -397,9 +394,9 @@ source: [Kawai](https://x.com/kawai_design)
 
 ### Royal blue and red
 
-![Screenshot 2025-12-11 at 17.21.53](https://hackmd.io/_uploads/H1gBCkKGbx.png)
-![Screenshot 2025-12-11 at 17.22.52](https://hackmd.io/_uploads/rJDuCkKzWl.png)
-![Screenshot 2025-12-11 at 17.23.28](https://hackmd.io/_uploads/H1yiCyFzZe.png)
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/H1gBCkKGbx.png]]
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/rJDuCkKzWl.png]]
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/H1yiCyFzZe.png]]
 
 ```
 Shades of royal Blue and Red wet watercolor.  Focus on different artistic styles to be used with kael/notebooklm Slides decks.
@@ -409,8 +406,8 @@ source: https://x.com/kottley/status/1994442047579721782?s=20
 
 ## Studio / Mockup / Premium
 
-![image](https://hackmd.io/_uploads/BkZwrxtzWl.png)
-![image](https://hackmd.io/_uploads/SyYvrxYzWe.png)
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/BkZwrxtzWl.png]]
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/SyYvrxYzWe.png]]
 ```
 # presentation_design_spec_premium_mockup_jp.yaml
 # Source: Uploaded Images (Apple Device Mockups with Modern UI)
@@ -490,8 +487,8 @@ source: https://note.com/yoshifujidesign/n/n7412bccb5762
 
 ## Sports / Athletic / Energy
 
-![image](https://hackmd.io/_uploads/BJChHgFGZx.png)
-![image](https://hackmd.io/_uploads/SkQ6BgFzZg.png)
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/BJChHgFGZx.png]]
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/SkQ6BgFzZg.png]]
 ```
 # presentation_design_spec_sports_active_jp.yaml
 # Style: Sports / Athletic / Energy
@@ -536,8 +533,8 @@ https://note.com/yoshifujidesign/n/n7412bccb5762
 
 ## Classic / Pop
 
-![image](https://hackmd.io/_uploads/ByC4UltzWg.png)
-![image](https://hackmd.io/_uploads/B1zB8lFG-e.png)
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/ByC4UltzWg.png]]
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/B1zB8lFG-e.png]]
 
 
 ```
@@ -610,8 +607,8 @@ Design Rules:
 source: https://note.com/yoshifujidesign/n/n7412bccb5762
 
 ## Tech / Art / Neon
-![image](https://hackmd.io/_uploads/BJOY8ltzWx.png)
-![image](https://hackmd.io/_uploads/r11cIlYfbx.png)
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/BJOY8ltzWx.png]]
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/r11cIlYfbx.png]]
 
 
 
@@ -683,8 +680,8 @@ source: https://note.com/yoshifujidesign/n/n7412bccb5762
 
 
 
-![image](https://hackmd.io/_uploads/HyXkPgFM-g.png)
-![image](https://hackmd.io/_uploads/BJOywxYfbx.png)
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/HyXkPgFM-g.png]]
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/BJOywxYfbx.png]]
 
 
 ```
@@ -758,9 +755,9 @@ source: https://note.com/yoshifujidesign/n/n7412bccb5762
 
 ## Anti-Gravity / Artifact Deck
 
-![unnamed-6](https://hackmd.io/_uploads/B1EVPrCfWl.png)
-![unnamed-7](https://hackmd.io/_uploads/rk4EDBAMbx.png)
-![unnamed-8](https://hackmd.io/_uploads/ryN4Dr0zbl.png)
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/B1EVPrCfWl.png]]
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/rk4EDBAMbx.png]]
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/ryN4Dr0zbl.png]]
 
 
 ```
@@ -908,9 +905,9 @@ Every slide should feel like part of one product narrative, not standalone poste
 
 
 
-![G8p_wILbkAAa2hr-min](https://hackmd.io/_uploads/r1HEH0um-x.jpg)
-![G8p_1m1asAE5Dy1-min](https://hackmd.io/_uploads/SkqEB0dQZl.jpg)
-![G8p_3Lya4AEJCqk-min](https://hackmd.io/_uploads/Ska4SCdXZl.jpg)
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/r1HEH0um-x.jpg]]
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/SkqEB0dQZl.jpg]]
+![[05-Skills（技能sop）/notebooklm-slide-prompts/preview-images/Ska4SCdXZl.jpg]]
 
 ```
 # Style:
