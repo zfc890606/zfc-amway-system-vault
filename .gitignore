@@ -21,6 +21,9 @@ Thumbs.db
 # Claude 会话记录（隐私，不入库）
 .claudian/
 
+# Claude 配置自动备份（机器相关，不入库）
+.claude/backup/
+
 # Wiki 备份产物
 .wiki-backup-*/
 
