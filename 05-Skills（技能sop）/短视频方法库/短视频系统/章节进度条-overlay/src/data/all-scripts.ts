@@ -474,6 +474,15 @@ export const allScripts: ScriptProgressData[] = [
       { label:"人民锐评：AI拆墙不是筑墙", sub:"别把判断力外包给卖课的", startS:175, endS:215 },
       { label:"收尾：败给的是认命", sub:"你怕的是AI还是跟不上时代的自己", startS:215, endS:240 },
     ]},
+  { id:"script-096B", num:96, title:"AI时代普通人会被淘汰吗——AI淘汰的不是人是旧技能", totalDurationS:225,
+    chapters:[
+      { label:"开场：AI淘汰的不是人是旧技能", sub:"它淘汰的是身上那套旧技能", startS:0, endS:25 },
+      { label:"我吃饭的本事被AI干完了", sub:"写病历做方案查文献几十秒", startS:25, endS:65 },
+      { label:"AI影响的是任务不是岗位", sub:"麦肯锡+OpenAI：八成人工伤一成任务", startS:65, endS:105 },
+      { label:"六成职业1940年不存在", sub:"高盛：3亿岗位自动化岗位在长", startS:105, endS:145 },
+      { label:"三个动作把AI变员工", sub:"派活/变工作流/守方向", startS:145, endS:190 },
+      { label:"收尾：技能能学人不淘汰", sub:"我能学会你也行", startS:190, endS:225 },
+    ]},
   { id:"script-097", num:97, title:"国家都在管你的体重了——三甲医院都要开体重管理门诊", totalDurationS:224,
     chapters:[
       { label:"开场：国家出手管你体重", sub:"所有三甲开体重门诊", startS:0, endS:15 },
