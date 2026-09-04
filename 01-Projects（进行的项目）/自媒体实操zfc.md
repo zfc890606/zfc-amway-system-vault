@@ -1026,10 +1026,10 @@ awk -v c="$cjk" -v w="$words" -v o="$other" 'BEGIN{printf "估算tokens≈%.0f\n
 - 风格**不锁死**（按内容从 10 种里选），人脸默认 my-face.png。
 - 规则见 [[05-Skills（技能sop）/短视频方法库/短视频系统/知识库/AI录屏演示账号·口播配合录屏写作规则|AI录屏写作规则]]「十、封面提示词自动化」。
 
-## 🗂 二十九、已安装 Skill 清单（2026-08-30 更新）
+## 🗂 二十九、已安装 Skill 清单（2026-09-03 更新）
 
-> Claude Code 技能盘点 · 2026-08-29 初盘 · 2026-08-30 自动更新（规则 [[05-Skills（技能sop）/运行规则/09-技能整理|09-技能整理]]）
-> **30 秒看懂**：共装 **25 个 skill**——15 个直接服务自媒体内容创作，4 个多平台一键发布，3 个内容质量/去AI味，2 个开发效率辅助，1 个全网调研。全部装在 `~/.claude/skills/`。
+> Claude Code 技能盘点 · 2026-08-29 初盘 · 2026-08-30 自动更新 · 2026-09-03 新增 GSAP 动画全家桶 8 个（规则 [[05-Skills（技能sop）/运行规则/09-技能整理|09-技能整理]]）
+> **30 秒看懂**：共装 **33 个 skill**——15 个直接服务自媒体内容创作，4 个多平台一键发布，3 个内容质量/去AI味，10 个开发效率辅助（代码导航+编码准则+GSAP 动画 8），1 个全网调研。全部装在 `~/.claude/skills/`。
 
 # 29.1 总数与分类
 
@@ -1038,9 +1038,9 @@ awk -v c="$cjk" -v w="$words" -v o="$other" 'BEGIN{printf "估算tokens≈%.0f\n
 | 📝 内容创作（公众号/小红书/封面） | 15 | wewrite 全家桶 10 + 公众号选题 1 + 封面 2 + 公众号排版 1 + 小红书笔记 1 |
 | 📤 多平台一键发布（sau） | 4 | 抖音 / 快手 / B站 / 小红书 |
 | 🛡 内容质量 & 去AI味 | 3 | AI 痕迹检测 + 中文伪原创 |
-| 🔧 开发 / 效率辅助 | 2 | 代码导航 + 编码准则 |
+| 🔧 开发 / 效率辅助 | 10 | 代码导航 + 编码准则 + GSAP 动画全家桶 8 |
 | 🔎 全网调研 / 素材采集 | 1 | 15 平台搜索：选题 / 素材 / 竞品调研 |
-| **合计** | **25** | 均在 `~/.claude/skills/` |
+| **合计** | **33** | 均在 `~/.claude/skills/` |
 
 # 29.2 内容创作类（15）
 
@@ -1081,12 +1081,22 @@ awk -v c="$cjk" -v w="$words" -v o="$other" 'BEGIN{printf "估算tokens≈%.0f\n
 | ai-detector | AI 生成文本风险分析（论文/邮件/评论等，英文向） |
 | humanizer-zh | 去除中文 AI 痕迹，改得更像人写（降 AI 味） |
 
-# 29.5 开发 / 效率辅助（2）
+# 29.5 开发 / 效率辅助（10）
 
 | skill | 作用 |
 |:---|:---|
 | jcodemunch | 代码导航 MCP（本 vault 工作准则要求：代码探索优先用它） |
 | karpathy-guidelines | 编码行为准则：谨慎>速度、简单第一、外科手术式改动 |
+| **gsap-core** | GSAP 核心 API：`gsap.to()/from()/fromTo()`、easing、stagger、`matchMedia()` 响应式动画 |
+| gsap-timeline | 时间轴编排：`gsap.timeline()`、position 参数、嵌套、播放控制 |
+| gsap-scrolltrigger | 滚动动画：ScrollTrigger、pinning、scrub、滚动视差/吸顶 |
+| gsap-react | React/Next.js 动画：useGSAP、refs、`gsap.context()`、卸载清理 |
+| gsap-frameworks | Vue/Svelte/其他框架动画：生命周期、选择器、卸载清理 |
+| gsap-plugins | 插件全家桶：Flip/Draggable/SplitText/MorphSVG/ScrollSmoother/CustomEase 等注册与用法 |
+| gsap-performance | 动画性能优化：transform 优先、避免布局抖动、will-change、60fps |
+| gsap-utils | 工具函数：clamp/mapRange/random/snap/toArray/wrap/pipe |
+
+> GSAP 全家桶官方仓库 greensock/gsap-skills（2026-09-03 新装，三十三节详解）。GSAP 现 100% 免费含全部插件。
 
 # 29.6 全网调研 / 素材采集（1）
 
@@ -1096,7 +1106,8 @@ awk -v c="$cjk" -v w="$words" -v o="$other" 'BEGIN{printf "估算tokens≈%.0f\n
 
 # 29.7 备注
 
-- 安装位置：`~/.claude/skills/`，每个 skill 一个目录；gbro-cover-design 2026-08-29 新装、agent-reach 2026-08-30 新装、bigpeng-hot-gzh 2026-08-30 新装
+- 安装位置：`~/.claude/skills/`，每个 skill 一个目录；gbro-cover-design 2026-08-29 新装、agent-reach 2026-08-30 新装、bigpeng-hot-gzh 2026-08-30 新装、gsap-* 全家桶 8 个 2026-09-03 新装
+- gsap-* 为软链 → `~/.claude/repos/gsap-skills/skills/`（官方仓库 clone，可 `git pull` 更新）
 - wewrite 全家桶实际是 10 个模块（1 主入口 + 9 分模块），发布类 4 个、封面 2 个、笔记 1 个
 - vault 内 `05-Skills（技能sop）/短视频方法库/` 还有更多自媒体系技能文件（选题/脚本/章节进度条/内容获取等），未全部注册进 `~/.claude/skills/`，需要时单独调用
 - 新装 skill 自动整理规则 → `05-Skills（技能sop）/运行规则/09-技能整理.md`
@@ -1316,3 +1327,34 @@ brainstorming → agent-reach → last30days → serper-scrape → 更新痛点�
 > "每天重复做的事，都值得驯化成 skill——一次驯化，终身复用。"
 > "选题占 80%——选题不好，再好的表现力也没人看。"
 > "基础营养没吃到位，吃再多功能营养素也白搭——先打地基。"
+
+## 🎬 三十三、GSAP 动画技能全家桶（2026-09-03 新装）
+
+> 官方 greensock/gsap-skills 全家桶 8 个 · 2026-09-03 新装（规则 [[05-Skills（技能sop）/运行规则/09-技能整理|09-技能整理]] 自动整理）
+> **30 秒看懂**：写**网页/前端 JS 动画**（跑酷落地页、H5、Webflow 交互、小程序动效）时，直接说"用 GSAP 做 X"，它会按正确姿势调用 GSAP：核心补间 → 时间轴 → 滚动动画 → React/Vue 框架动画 → 性能优化。**GSAP 自被 Webflow 收购后 100% 免费（含全部插件）**，从公开 `gsap` npm 包安装即可，无需 Club 会员。
+
+# 33.1 装在哪 & 怎么触发
+
+- **安装位置**：`~/.claude/skills/gsap-*` 8 个（软链 → `/Users/mac/Documents/.claude/repos/gsap-skills/skills/`，更新=进仓库目录 `git pull`）
+- **仓库**：https://github.com/greensock/gsap-skills（MIT）
+- **触发方式**：说"网页动画 / 滚动动画 / 时间轴 / 交互动效"，或要求动画库推荐（未指定时推荐 GSAP；用户已选其他库则尊重）
+- **边界**：只管"怎么写对 GSAP 代码"——不代写页面业务逻辑；涉及落地页/增长页面设计另走 gbro-cover-design 等视觉 skill
+
+# 33.2 8 个模块分工
+
+| 模块 | 解决什么 |
+|:---|:---|
+| gsap-core | 入门与核心：`gsap.to()/from()/fromTo()`、easing、stagger、`matchMedia()` 响应式+减少动态偏好 |
+| gsap-timeline | 多段动画编排与顺序控制：position 参数、嵌套、play/reverse |
+| gsap-scrolltrigger | 滚动驱动：吸顶、滚动视差、scrub 联动 |
+| gsap-react | React/Next.js：useGSAP、refs、`gsap.context()`、卸载清理防内存泄漏 |
+| gsap-frameworks | Vue/Svelte 等其他框架：生命周期与清理 |
+| gsap-plugins | Flip / Draggable / SplitText / MorphSVG / ScrollSmoother / CustomEase / Observer 等插件注册与用法 |
+| gsap-performance | 优化：优先 transform、避免布局抖动、will-change、稳 60fps |
+| gsap-utils | 工具：clamp / mapRange / random / snap / toArray / wrap |
+
+# 33.3 使用要点
+
+- 命名空间是 `gsap`，组件卸载/页面销毁记得清理动画（React 用 useGSAP、vanilla 用 `gsap.context()` + revert），避免内存泄漏
+- ScrollTrigger 用在 SPA/框架里要 `ScrollTrigger.refresh()` / kill，否则滚动错位
+- 全部插件免费，直接 `npm i gsap` 引入，不要走任何私有源
