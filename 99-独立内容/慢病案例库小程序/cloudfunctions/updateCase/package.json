@@ -1,9 +1,0 @@
-{
-  "name": "updateCase",
-  "version": "1.0.0",
-  "description": "更新慢病案例",
-  "main": "index.js",
-  "dependencies": {
-    "wx-server-sdk": "~2.6.3"
-  }
-}

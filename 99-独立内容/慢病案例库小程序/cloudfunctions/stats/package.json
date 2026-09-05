@@ -1,9 +1,0 @@
-{
-  "name": "stats",
-  "version": "1.0.0",
-  "description": "统计各板块案例数",
-  "main": "index.js",
-  "dependencies": {
-    "wx-server-sdk": "~2.6.3"
-  }
-}

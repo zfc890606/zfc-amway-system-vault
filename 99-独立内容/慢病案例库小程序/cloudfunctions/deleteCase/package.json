@@ -1,9 +1,0 @@
-{
-  "name": "deleteCase",
-  "version": "1.0.0",
-  "description": "软删除慢病案例",
-  "main": "index.js",
-  "dependencies": {
-    "wx-server-sdk": "~2.6.3"
-  }
-}
