@@ -34,6 +34,16 @@ const ANCHORS = [
   { id: 'traffic',  level: 2, needle: '十一、流量思维' },
   { id: 'realfeel', level: 2, needle: '十二、真实感写作法' },
   { id: 'links',    level: 2, needle: '十三、关联文件' },
+  { id: 'tpl',      level: 2, needle: '十四、脚本结构模板库' },
+  { id: 'flavor',   level: 2, needle: '十五、个人味道素材库' },
+  { id: 'titledec', level: 2, needle: '十六、标题决策卡' },
+  { id: 'runbook',  level: 2, needle: '十七、写稿执行流水线' },
+  { id: 'flowup',   level: 2, needle: '十八、创作流程' },
+  { id: 'strategy', level: 2, needle: '十九、内容策略' },
+  { id: 'kwords',   level: 2, needle: '二十、关键词库' },
+  { id: 'risk',     level: 2, needle: '二十一、风控总表' },
+  { id: 'comments', level: 2, needle: '二十二、评论区选题挖掘法' },
+  { id: 'sop',      level: 2, needle: '二十三、「我的十年」' },
 ];
 
 const START = '<!--TOKNAV:start-->';
@@ -60,8 +70,9 @@ function buildBlock(pos, totalLines, kb) {
   return [
     START,
     `> ⚠️ **本文件 ≈${kb} KB / ${totalLines} 行 · 勿通读全文** —— 按行号跳读所需小节，省 90% tokens。`,
-    `> 🎯 **写稿必读**：已验证爆款公式 → 行${L('verified')} ｜ 写稿八步 → 行${L('flow')} ｜ 写作铁律17条 → 行${L('rules')} ｜ 写稿自检 → 行${L('check')}`,
+    `> 🎯 **写稿必读**：已验证爆款公式 → 行${L('verified')} ｜ 写稿八步 → 行${L('flow')} ｜ 写作铁律18条 → 行${L('rules')} ｜ 写稿自检 → 行${L('check')}`,
     `> 🔎 **卡哪查哪**：选题对位 → 〇章 行${L('topic')} ｜ 语气立场 → 一理念 行${L('idea')} ｜ 风格支柱 → 二章 行${L('pillar')} ｜ 情绪节奏 → 四章 行${L('emotion')} ｜ 开头3秒 → 五章 行${L('opening')} ｜ 结尾四拍 → 六章 行${L('closing')} ｜ 类型侧重 → 七章 行${L('type')} ｜ 流量完播 → 十一章 行${L('traffic')} ｜ 真实感口吻 → 十二章 行${L('realfeel')}`,
+    `> 📦 **整合专区（原独立文档）**：十四 模板 行${L('tpl')} ｜ 十五 味道库 行${L('flavor')} ｜ 十六 标题卡 行${L('titledec')} ｜ 十七 流水线 行${L('runbook')} ｜ 十八 创作流程 行${L('flowup')} ｜ 十九 内容策略 行${L('strategy')} ｜ 二十 关键词库 行${L('kwords')} ｜ 二十一 风控 行${L('risk')} ｜ 二十二 评论选题 行${L('comments')} ｜ 二十三 SOP 行${L('sop')}`,
     `> ⏭️ **参考·默认跳过**：九章案例对比 行${L('refcase')} ｜ 十章对标 行${L('refbench')} ｜ 十三章关联 行${L('links')}`,
     `> 📌 Obsidian 直达：搜小节名如“五、开头钩子公式库”；Claude Code 用 Read(offset=行号-1)。`,
     END,
